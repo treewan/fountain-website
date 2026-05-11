@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      width: 1080px;
+      height: 1080px;
+      background: linear-gradient(180deg, #000510 0%, #001040 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      padding: 60px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .diamond {
+      width: 20px;
+      height: 20px;
+      background: white;
+      transform: rotate(45deg);
+    }
+    
+    .logo-text {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 4px;
+    }
+    
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .timeline {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      max-width: 960px;
+    }
+    
+    .phase {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    
+    .phase-num {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+    
+    .phase-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e90ff, #0050b0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+    }
+    
+    .phase-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .phase-location {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    
+    .phase-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+    
+    .connector {
+      width: 40px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin-top: -60px;
+    }
+    
+    .footer {
+      margin-top: 60px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <div class="diamond"></div>
+      <span class="logo-text">FOUNTAIN</span>
+    </div>
+    <h1>The Program</h1>
+    <p class="subtitle">From AI demo to physical product in 5 phases</p>
+  </div>
+  
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-num">01</div>
+      <div class="phase-icon">🎯</div>
+      <div class="phase-title">PMF</div>
+      <div class="phase-location">San Francisco</div>
+      <div class="phase-desc">Product-Market Fit validation</div>
+    </div>
+    
+    <div class="connector"></div>
+    
+    <div class="phase">
+      <div class="phase-num">02</div>
+      <div class="phase-icon">🏭</div>
+      <div class="phase-title">Immersion</div>
+      <div class="phase-location">Shenzhen</div>
+      <div class="phase-desc">Supply chain deep dive</div>
+    </div>
+    
+    <div class="connector"></div>
+    
+    <div class="phase">
+      <div class="phase-num">03</div>
+      <div class="phase-icon">🔧</div>
+      <div class="phase-title">Build</div>
+      <div class="phase-location">Shenzhen</div>
+      <div class="phase-desc">Hardware development</div>
+    </div>
+    
+    <div class="connector"></div>
+    
+    <div class="phase">
+      <div class="phase-num">04</div>
+      <div class="phase-icon">🔬</div>
+      <div class="phase-title">EVT</div>
+      <div class="phase-location">Shenzhen</div>
+      <div class="phase-desc">Engineering prototype</div>
+    </div>
+    
+    <div class="connector"></div>
+    
+    <div class="phase">
+      <div class="phase-num">05</div>
+      <div class="phase-icon">🚀</div>
+      <div class="phase-title">Launch</div>
+      <div class="phase-location">San Francisco</div>
+      <div class="phase-desc">Demo Day & ship</div>
+    </div>
+  </div>
+  
+  <div class="footer">fountainbuild.ai</div>
+</body>
+</html>

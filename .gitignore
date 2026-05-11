@@ -1,0 +1,23 @@
+# Vercel
+.vercel
+
+# Dependencies
+node_modules/
+
+# Generated decks
+*.pdf
+*.pptx
+
+# Screenshots
+check-*.png
+final-*.png
+iphone-*.png
+test-*.png
+screenshot-*.png
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

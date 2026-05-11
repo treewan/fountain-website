@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>FOUNTAIN Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #ffffff;
+      --ink: #0f172a;
+      --ink2: #334155;
+      --ink3: #64748b;
+      --ink4: #94a3b8;
+      --line: #e2e8f0;
+    }
+    
+    html, body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .slide {
+      width: 1280px;
+      height: 720px;
+      padding: 80px 72px 48px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--bg);
+    }
+    
+    .label {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    
+    .slide h2 {
+      margin-bottom: 40px;
+    }
+    
+    .slide .lead,
+    .slide .sub,
+    .slide .phase-sub {
+      margin-bottom: 40px;
+    }
+    
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 32px;
+      right: 72px;
+      font-size: 10px;
+      color: var(--ink4);
+    }
+    
+    .logo-footer {
+      position: absolute;
+      bottom: 32px;
+      left: 72px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-footer .diamond {
+      width: 14px;
+      height: 14px;
+      background: #2563eb;
+      transform: rotate(45deg);
+    }
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .logo-header .diamond {
+      width: 32px;
+      height: 32px;
+      background: #2563eb;
+      transform: rotate(45deg);
+    }
+    .logo-header span {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+    }
+
+    /* ══════════ COVER ══════════ */
+    .slide-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-cover .logo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .slide-cover h1 {
+      font-size: 56px;
+      margin-bottom: 12px;
+    }
+    .slide-cover .subtitle {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink2);
+      margin-bottom: 32px;
+    }
+    .slide-cover .tagline {
+      font-size: 17px;
+      color: var(--ink3);
+      font-style: italic;
+    }
+
+    /* ══════════ WHY PHYSICAL AI ══════════ */
+    .slide-why h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-why .lead {
+      font-size: 16px;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+    .why-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .why-left p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .why-box {
+      background: #f8fafc;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .why-box p {
+      font-size: 14px;
+      color: var(--ink2);
+      margin: 0;
+    }
+    .why-right h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink4);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .category {
+      margin-bottom: 16px;
+    }
+    .category h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .category p {
+      font-size: 13px;
+      color: var(--ink3);
+    }
+
+    /* ══════════ THE GAP ══════════ */
+    .slide-gap h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-gap .lead {
+      font-size: 16px;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+    .gap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 48px;
+    }
+    .gap-item {
+      padding-left: 16px;
+      border-left: 2px solid var(--line);
+    }
+    .gap-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .gap-item p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+    .gap-item ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .gap-item li {
+      font-size: 13px;
+      color: var(--ink3);
+      padding: 2px 0;
+    }
+    .gap-item li::before {
+      content: "·";
+      margin-right: 8px;
+      color: var(--ink4);
+    }
+
+    /* ══════════ THE SYSTEM ══════════ */
+    .slide-system h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-system .sub {
+      font-size: 16px;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+    .system-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .system-card {
+      padding: 28px;
+      background: #f8fafc;
+    }
+    .system-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .system-card p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .system-card .arrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .system-card ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .system-card li {
+      font-size: 13px;
+      color: var(--ink3);
+      padding: 2px 0;
+    }
+
+    /* ══════════ PROGRAM OVERVIEW ══════════ */
+    .slide-program h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-program .sub {
+      font-size: 15px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .program-phases {
+      display: flex;
+      gap: 0;
+      border-top: 2px solid var(--ink);
+      padding-top: 20px;
+      margin-bottom: 24px;
+    }
+    .phase {
+      flex: 1;
+      padding-right: 12px;
+    }
+    .phase .num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink4);
+      margin-bottom: 6px;
+    }
+    .phase .loc {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink4);
+      margin-bottom: 6px;
+    }
+    .phase .title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .program-benefits {
+      display: flex;
+      gap: 32px;
+    }
+    .benefit {
+      font-size: 13px;
+      color: var(--ink3);
+    }
+    .benefit strong {
+      color: var(--ink2);
+    }
+
+    /* ══════════ PHASE DETAIL SLIDES ══════════ */
+    .slide-phase h2 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .slide-phase .phase-sub {
+      font-size: 15px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .phase-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .phase-content.single {
+      grid-template-columns: 1fr;
+    }
+    .phase-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .phase-block p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .phase-block ul {
+      list-style: none;
+    }
+    .phase-block li {
+      font-size: 13px;
+      color: var(--ink3);
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .phase-block li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--ink4);
+    }
+
+    /* ══════════ LAUNCH ══════════ */
+    .slide-launch h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-launch .lead {
+      font-size: 16px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .engines {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .engine {
+      padding: 24px;
+      border: 1px solid var(--line);
+    }
+    .engine .num {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .engine h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .engine p {
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.45;
+    }
+
+    /* ══════════ PARTNER ══════════ */
+    .slide-partner h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-partner .sub {
+      font-size: 15px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .partner-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+    }
+    .partner-card.primary {
+      border: 1px solid var(--line);
+    }
+    .partner-card .path {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--ink4);
+      margin-bottom: 8px;
+    }
+    .partner-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .partner-card .amount {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .partner-card .equity {
+      font-size: 15px;
+      color: var(--ink2);
+      margin-bottom: 16px;
+    }
+    .partner-card .breakdown {
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.5;
+    }
+
+    /* ══════════ EIR ══════════ */
+    .slide-eir h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-eir .sub {
+      font-size: 15px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .eir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .eir-left p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .eir-right h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink4);
+      margin-bottom: 16px;
+    }
+    .profile-item {
+      margin-bottom: 14px;
+    }
+    .profile-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .profile-item p {
+      font-size: 13px;
+      color: var(--ink3);
+    }
+
+    /* ══════════ BATCH ══════════ */
+    .slide-batch h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+    .batch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .batch-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+    }
+    .batch-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .batch-card .emoji { font-size: 20px; }
+    .batch-card .launch {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink4);
+    }
+    .batch-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .batch-card .location {
+      font-size: 12px;
+      color: var(--ink4);
+      margin-bottom: 10px;
+    }
+    .batch-card .founder {
+      font-size: 13px;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .batch-card .desc {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.4;
+    }
+
+    /* ══════════ TEAM ══════════ */
+    .slide-team h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-team .lead {
+      font-size: 15px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .founder-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .founder-card .title {
+      font-size: 12px;
+      color: var(--ink4);
+      margin-bottom: 14px;
+    }
+    .founder-card p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .founder-card .backers {
+      font-size: 12px;
+      color: var(--ink4);
+    }
+
+    /* ══════════ ADVISORY ══════════ */
+    .slide-advisory h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+    .advisory-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .advisor-tag {
+      font-size: 15px;
+      color: var(--ink2);
+      padding: 10px 20px;
+      background: #f8fafc;
+    }
+
+    /* ══════════ WHY FOUNTAIN ══════════ */
+    .slide-whyus h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .slide-whyus .lead {
+      font-size: 16px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+    }
+    .whyus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 40px;
+    }
+    .whyus-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .whyus-item p {
+      font-size: 14px;
+      color: var(--ink3);
+      line-height: 1.5;
+    }
+
+    /* ══════════ CTA ══════════ */
+    .slide-cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-cta h2 {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+    .slide-cta .lead {
+      font-size: 17px;
+      color: var(--ink3);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .cta-box {
+      margin-bottom: 24px;
+    }
+    .cta-box .what {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink4);
+      margin-bottom: 8px;
+    }
+    .cta-items {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--ink2);
+    }
+    .slide-cta .contact {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: inline-block;
+    }
+    .slide-cta .email {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .slide-cta .web {
+      font-size: 14px;
+      color: var(--ink4);
+    }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide slide-cover">
+  <div class="logo-header"><span class="diamond"></span><span>FOUNTAIN</span></div>
+  <h1>Physical AI Accelerator</h1>
+  <p class="subtitle">Bay Area × Shenzhen</p>
+  <p class="tagline">FOUNTAIN brings AI into the physical world, with builders.</p>
+  <span class="page-num">1</span>
+</div>
+
+<!-- SLIDE 2: WHY PHYSICAL AI -->
+<div class="slide slide-why">
+  <p class="label">Why Physical AI</p>
+  <h2>Physical AI is the next distribution layer of intelligence</h2>
+  <p class="lead">— and one of the largest opportunities of the coming decade.</p>
+  <div class="why-content">
+    <div class="why-left">
+      <p>AI has scaled rapidly in the digital world. <strong>The physical world is only beginning.</strong></p>
+      <p>The real world provides elements that pure software cannot:</p>
+      <div class="why-box"><p>Rich sensory data · Contextual feedback · Physical constraints</p></div>
+      <p>These forces push AI models and agents to evolve faster and become more robust.</p>
+    </div>
+    <div class="why-right">
+      <h3>Physical AI includes:</h3>
+      <div class="category">
+        <h4>AI Devices</h4>
+        <p>Standalone hardware powered by on-device intelligence.</p>
+      </div>
+      <div class="category">
+        <h4>Wearables & Sensors</h4>
+        <p>Always-on data streams from the body and environment.</p>
+      </div>
+      <div class="category">
+        <h4>Embodied Systems</h4>
+        <p>Robotics and intelligent machines acting in the real world.</p>
+      </div>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">2</span>
+</div>
+
+<!-- SLIDE 3: THE GAP -->
+<div class="slide slide-gap">
+  <p class="label">The Real-World Gap</p>
+  <h2>There is still a large gap between a compelling AI demo and a real-world product that can ship at scale.</h2>
+  <p class="lead"></p>
+  <div class="gap-grid">
+    <div class="gap-item">
+      <h4>Building ≠ Shipping</h4>
+      <p>Building models or applications is not the same as shipping physical systems.</p>
+    </div>
+    <div class="gap-item">
+      <h4>Prototype → Mass Production</h4>
+      <p>Moving from prototype to mass production requires:</p>
+      <ul>
+        <li>System integration</li>
+        <li>Supply chain capability</li>
+        <li>Manufacturing expertise</li>
+        <li>Rapid iteration cycles</li>
+      </ul>
+    </div>
+    <div class="gap-item">
+      <h4>Access to Asia</h4>
+      <p>US-based teams often need Shenzhen and Asia to access:</p>
+      <ul>
+        <li>Factories & components</li>
+        <li>Manufacturing partners</li>
+        <li>Production iteration speed</li>
+      </ul>
+    </div>
+    <div class="gap-item">
+      <h4>Ship or Stay Demo</h4>
+      <p>Great models are necessary but not sufficient. Real-world systems must be designed, validated, manufactured, shipped. Otherwise they remain demos.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">3</span>
+</div>
+
+<!-- SLIDE 4: THE SYSTEM -->
+<div class="slide slide-system">
+  <p class="label">The FOUNTAIN System</p>
+  <h2>A Physical AI product accelerator built on a bridge between Silicon Valley and Shenzhen.</h2>
+  <p class="sub">The system operates through two complementary engines.</p>
+  <div class="system-grid">
+    <div class="system-card">
+      <h3>Accelerator Engine</h3>
+      <p>Scaling AI-native teams from prototype to real-world product.</p>
+      <p class="arrow">AI Demo → Physical AI Product</p>
+      <p>Through a structured program solving simultaneously:</p>
+      <ul>
+        <li>Model fit</li>
+        <li>Market fit</li>
+        <li>Manufacturing fit</li>
+      </ul>
+    </div>
+    <div class="system-card">
+      <h3>Venture Studio</h3>
+      <p>Creating new Physical AI companies from the ground up.</p>
+      <p class="arrow">Idea → Company</p>
+      <p>FOUNTAIN identifies opportunity spaces and co-builds alongside founding teams from the earliest stage.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">4</span>
+</div>
+
+<!-- SLIDE 5: PROGRAM OVERVIEW -->
+<div class="slide slide-program">
+  <p class="label">How the Program Works</p>
+  <h2>Builders typically work with FOUNTAIN for six months.</h2>
+  <p class="sub">At the core is an 18-week build sprint across two continents.</p>
+  <div class="program-phases">
+    <div class="phase">
+      <p class="num">Phase 1</p>
+      <p class="loc">San Francisco</p>
+      <p class="title">PMF Alignment</p>
+    </div>
+    <div class="phase">
+      <p class="num">Phase 2</p>
+      <p class="loc">Shenzhen</p>
+      <p class="title">Immersion</p>
+    </div>
+    <div class="phase">
+      <p class="num">Phase 3</p>
+      <p class="loc">SZ & SF</p>
+      <p class="title">Hardware Build</p>
+    </div>
+    <div class="phase">
+      <p class="num">Phase 4</p>
+      <p class="loc">Shenzhen</p>
+      <p class="title">EVT Prototypes</p>
+    </div>
+    <div class="phase">
+      <p class="num">Phase 5</p>
+      <p class="loc">San Francisco</p>
+      <p class="title">GTM & Launch</p>
+    </div>
+  </div>
+  <p style="font-size: 14px; color: var(--ink2); margin-bottom: 20px;">Each phase compresses years of hardware and manufacturing learning into weeks.</p>
+  <div class="program-benefits">
+    <span class="benefit"><strong>Factories</strong></span>
+    <span class="benefit"><strong>Supply chains</strong></span>
+    <span class="benefit"><strong>Advisors</strong></span>
+    <span class="benefit"><strong>Real users</strong></span>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">5</span>
+</div>
+
+<!-- SLIDE 6: PHASE 1 -->
+<div class="slide slide-phase">
+  <p class="label">Phase 1 · San Francisco</p>
+  <h2>PMF & Product Alignment</h2>
+  <p class="phase-sub">Align model capability, user value, and manufacturing feasibility at the same time.</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px;">
+    <div style="padding: 28px; background: #f8fafc; border-left: 3px solid #2563eb;">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #0f172a;">Product–Model Fit</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6;">Ensure the AI model's capabilities map directly to a real user need and interaction paradigm.</p>
+    </div>
+    <div style="padding: 28px; background: #f8fafc; border-left: 3px solid #2563eb;">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #0f172a;">Product–Market Fit</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6;">Validate demand signals, pricing, and positioning before manufacturing begins.</p>
+    </div>
+    <div style="padding: 28px; background: #f8fafc; border-left: 3px solid #2563eb;">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #0f172a;">Product–MP Fit</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6;">Confirm the product can be manufactured at scale: materials, tolerances, cost targets, yield rates.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">6</span>
+</div>
+
+<!-- SLIDE 7: PHASE 2 & 3 -->
+<div class="slide slide-phase">
+  <p class="label">Phase 2 & 3 · Shenzhen</p>
+  <h2>Immersion & Hardware Development</h2>
+  <p class="phase-sub">Enter the ecosystem that powers global hardware production.</p>
+  <div class="phase-content">
+    <div class="phase-block">
+      <h3>Phase 2 — Shenzhen Immersion</h3>
+      <p>Builders enter the ecosystem that powers global hardware production.</p>
+      <ul>
+        <li>Visiting component markets</li>
+        <li>Meeting contract manufacturers</li>
+        <li>Working with engineering houses</li>
+      </ul>
+      <p style="margin-top: 12px;">Learn how the physical world actually operates: materials, processes, costs, yields, certifications, timelines.</p>
+      <p><strong>Work from the FOUNTAIN Physical AI House.</strong></p>
+    </div>
+    <div class="phase-block">
+      <h3>Phase 3 — Hardware Development</h3>
+      <p>Product development happens in parallel across disciplines:</p>
+      <ul>
+        <li>Industrial design</li>
+        <li>Electronics</li>
+        <li>Mechanical engineering</li>
+        <li>AI system architecture</li>
+      </ul>
+      <p style="margin-top: 12px;"><strong>Objective:</strong> Merge AI and physical architectures into one integrated system.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">7</span>
+</div>
+
+<!-- SLIDE 8: PHASE 4 -->
+<div class="slide slide-phase">
+  <p class="label">Phase 4 · Shenzhen</p>
+  <h2>EVT Prototypes</h2>
+  <p class="phase-sub">Create the first working physical interface for the AI system.</p>
+  <div class="phase-content single" style="max-width: 700px;">
+    <div class="phase-block">
+      <h3>Typical Output</h3>
+      <ul>
+        <li>3–5 Engineering Validation Test devices</li>
+        <li>Full system integration</li>
+        <li>Mechanical and electronic validation</li>
+      </ul>
+      <p style="margin-top: 20px;">Devices are <strong>tested, logged, and reviewed</strong> in preparation for mass production.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">8</span>
+</div>
+
+<!-- SLIDE 9: PHASE 5 -->
+<div class="slide slide-phase">
+  <p class="label">Phase 5 · San Francisco</p>
+  <h2>User Testing + Storytelling + GTM</h2>
+  <p class="phase-sub">Bring the product into the real world.</p>
+  <div class="phase-content">
+    <div class="phase-block">
+      <h3>User Feedback</h3>
+      <p>Products are tested with real users and KOLs in real environments.</p>
+      <p>The goal is to collect real-world usage data.</p>
+    </div>
+    <div class="phase-block">
+      <h3>Narrative</h3>
+      <p>Founders and the FOUNTAIN team craft the product narrative.</p>
+      <p>Positioning designed to resonate with:</p>
+      <ul>
+        <li>Early adopters</li>
+        <li>Investors</li>
+        <li>Media</li>
+      </ul>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">9</span>
+</div>
+
+<!-- SLIDE 10: LAUNCH -->
+<div class="slide slide-launch">
+  <p class="label">Launch</p>
+  <h2>Launch Day is Graduation Day.</h2>
+  <p class="lead">FOUNTAIN does not run a demo day. We ship the Physical AI.</p>
+  <p style="font-size: 14px; color: var(--ink3); margin-bottom: 24px;">After launch, three scale engines activate:</p>
+  <div class="engines">
+    <div class="engine">
+      <p class="num">1</p>
+      <h3>Mass Production</h3>
+      <p>Transition from EVT validation to real distribution. Typical first run: ≈ 3,000 units.</p>
+    </div>
+    <div class="engine">
+      <p class="num">2</p>
+      <h3>Growth System</h3>
+      <p>Hardware: crowdfunding, DTC, e-commerce, distributors. Software: Product Hunt, developer communities, social.</p>
+    </div>
+    <div class="engine">
+      <p class="num">3</p>
+      <h3>Iteration Loop</h3>
+      <p>Real-world usage generates data. Data improves models. Improved models drive the next product cycle.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">10</span>
+</div>
+
+<!-- SLIDE 11: PARTNERSHIP -->
+<div class="slide slide-partner">
+  <p class="label">How We Partner</p>
+  <h2>Two partnership models depending on team stage.</h2>
+  <p class="sub">Both follow the same principle: We earn our position by building alongside founders.</p>
+  <div class="partner-grid">
+    <div class="partner-card primary">
+      <p class="path">Path 1</p>
+      <h3>Full Stack</h3>
+      <p class="amount">$500K</p>
+      <p class="equity">for 10% equity</p>
+      <p class="breakdown">5% → FOUNTAIN execution system 5% → capital partner</p>
+    </div>
+    <div class="partner-card">
+      <p class="path">Path 2</p>
+      <h3>Execution Engine</h3>
+      <p class="amount">5%</p>
+      <p class="equity">equity (program only)</p>
+      <p class="breakdown">5% → FOUNTAIN execution system Designed for funded teams who need execution capability.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">11</span>
+</div>
+
+<!-- SLIDE 12: VENTURE STUDIO / EIR -->
+<div class="slide slide-eir">
+  <p class="label">Venture Studio</p>
+  <h2>Entrepreneur in Residence (EIR)</h2>
+  <p class="sub">FOUNTAIN also operates a venture studio, recruiting EIRs to lead new Physical AI companies.</p>
+  <div class="eir-grid">
+    <div class="eir-left">
+      <p>FOUNTAIN acts as a co-founder in building these companies.</p>
+      <p>EIRs lead:</p>
+      <ul style="list-style: none; margin-top: 8px;">
+        <li style="font-size: 14px; color: #0f172a; padding: 4px 0; font-weight: 700;">· Ideation</li>
+        <li style="font-size: 14px; color: #0f172a; padding: 4px 0; font-weight: 700;">· Product development</li>
+        <li style="font-size: 14px; color: #0f172a; padding: 4px 0; font-weight: 700;">· Company formation</li>
+      </ul>
+    </div>
+    <div class="eir-right">
+      <h3>Ideal EIR Profile</h3>
+      <div class="profile-item">
+        <h4>Deep Expertise</h4>
+        <p>Experience in AI, robotics, hardware, or deep technology.</p>
+      </div>
+      <div class="profile-item">
+        <h4>Vision & Drive</h4>
+        <p>A clear vision for a Physical AI product and the determination to build it.</p>
+      </div>
+      <div class="profile-item">
+        <h4>Hardware Acumen</h4>
+        <p>Understanding the realities of manufacturing and supply chains.</p>
+      </div>
+      <div class="profile-item">
+        <h4>Team Builder</h4>
+        <p>Ability to attract and lead strong teams.</p>
+      </div>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">12</span>
+</div>
+
+<!-- SLIDE 13: BATCH F1 -->
+<div class="slide slide-batch">
+  <p class="label">Builders with us</p>
+  <h2>FOUNTAIN Batch 1</h2>
+  <div class="batch-grid">
+    <div class="batch-card">
+      <div class="top">
+        <span class="emoji">🔖</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Mark</h3>
+      <p class="location">Los Angeles</p>
+      <p class="founder">Founder: Eason Tang</p>
+      <p class="desc">AI bookmark for reading and knowledge.</p>
+    </div>
+    <div class="batch-card">
+      <div class="top">
+        <span class="emoji">💍</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Sparkring</h3>
+      <p class="location">Shenzhen</p>
+      <p class="founder">Founder: Charley Tang</p>
+      <p class="desc">AI ring for voice-driven workflows.</p>
+    </div>
+    <div class="batch-card">
+      <div class="top">
+        <span class="emoji">🩺</span>
+        <span class="launch">Q1 2026</span>
+      </div>
+      <h3>Cortexa</h3>
+      <p class="location">Palo Alto</p>
+      <p class="founder">Founder: Jack Lee</p>
+      <p class="desc">AI medical hardware for clinical documentation.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">13</span>
+</div>
+
+<!-- SLIDE 14: TEAM -->
+<div class="slide slide-team">
+  <p class="label">Who We Are</p>
+  <h2>Built by builders. For builders building in the real world.</h2>
+  <p class="lead">Operating between Silicon Valley and Shenzhen.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 24px;">
+    <!-- Tree -->
+    <div style="background: #f8fafc; padding: 32px; position: relative;">
+      <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #2563eb;"></div>
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 8px;">SHENZHEN</p>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">Tree Wan</h3>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Co-founder</p>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 16px;">Serial software and robotics entrepreneur with a decade of shipping hardware & software to millions of users.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">Tencent</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">Speedfox</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">See</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">Zeustech</span>
+      </div>
+      <p style="font-size: 11px; color: #94a3b8; font-weight: 500;">Backed by</p>
+      <p style="font-size: 13px; color: #64748b; margin-top: 4px;">Sequoia · IDG · BAI · Tencent · Alibaba</p>
+    </div>
+    <!-- Miki -->
+    <div style="background: #f8fafc; padding: 32px; position: relative;">
+      <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #2563eb;"></div>
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 8px;">SILICON VALLEY</p>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">Miki Watanabe</h3>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Co-founder</p>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 16px;">Early-stage tech investor and consumer GTM expert. Deep experience in product strategy and go-to-market across US and Asia.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">HAX Japan</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">McKinsey</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">Stanford MBA</span>
+        <span style="font-size: 12px; padding: 4px 10px; background: white; color: #334155; font-weight: 500;">TikTok Shop</span>
+      </div>
+      <p style="font-size: 11px; color: #94a3b8; font-weight: 500;">Hardware Accelerator Experience</p>
+      <p style="font-size: 13px; color: #64748b; margin-top: 4px;">HAX Japan · Head of Strategy at TikTok Shop</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">14</span>
+</div>
+
+<!-- SLIDE 15: ADVISORY -->
+<div class="slide slide-advisory">
+  <p class="label">Advisory Board</p>
+  <h2>Deep connections across robotics, hardware, and AI industries</h2>
+  <p style="font-size: 15px; color: #64748b; margin-bottom: 32px;">Our advisors provide direct access to manufacturing, supply chain, and technical expertise.</p>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">ROBOTICS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">DG Robotics</p>
+      <p style="font-size: 12px; color: #64748b;">Industrial Automation</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">ROBOTICS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Dobot</p>
+      <p style="font-size: 12px; color: #64748b;">Collaborative Robots</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">CONSUMER ROBOTS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Robosen</p>
+      <p style="font-size: 12px; color: #64748b;">Entertainment Robotics</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">HOME ROBOTICS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Narwal Robot</p>
+      <p style="font-size: 12px; color: #64748b;">Smart Home Cleaning</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">OPTICS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Goeroptics</p>
+      <p style="font-size: 12px; color: #64748b;">Optical Components</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">TALENT</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Liepin</p>
+      <p style="font-size: 12px; color: #64748b;">Executive Recruiting</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">CONSUMER TECH</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Watermark Camera</p>
+      <p style="font-size: 12px; color: #64748b;">Mobile Imaging</p>
+    </div>
+    <div style="padding: 24px; background: #f8fafc; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 12px;">HOME ROBOTICS</p>
+      <p style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Neabot</p>
+      <p style="font-size: 12px; color: #64748b;">Pet & Home Tech</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">15</span>
+</div>
+
+<!-- SLIDE 16: WHY FOUNTAIN -->
+<div class="slide slide-whyus">
+  <p class="label">Why Work with FOUNTAIN</p>
+  <h2>Most programs advise. FOUNTAIN builds.</h2>
+  <p class="lead"></p>
+  <div class="whyus-grid">
+    <div class="whyus-item">
+      <h4>Capital That Actually Works</h4>
+      <p>We embed in your build, supply chain, and go-to-market from day one.</p>
+    </div>
+    <div class="whyus-item">
+      <h4>Accelerated Hardware Development</h4>
+      <p>Direct factory access and EVT builds faster than teams can achieve alone.</p>
+    </div>
+    <div class="whyus-item">
+      <h4>Dual-Continent Power</h4>
+      <p>Silicon Valley strategy × Shenzhen execution.</p>
+    </div>
+    <div class="whyus-item">
+      <h4>Go-to-Market Expertise</h4>
+      <p>Support from user testing to narrative to launch.</p>
+    </div>
+    <div class="whyus-item">
+      <h4>Builders Who Actually Did It</h4>
+      <p>Our team has shipped hardware to millions of users.</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+  <span class="page-num">16</span>
+</div>
+
+<!-- SLIDE 17: CTA -->
+<div class="slide slide-cta">
+  <p class="label">Join the Build</p>
+  <h2>If you're building Physical AI, we should talk.</h2>
+  <p class="lead">Start with a 30-minute conversation.</p>
+  <div style="display: flex; gap: 48px; margin-top: 40px;">
+    <div>
+      <p style="font-size: 12px; font-weight: 600; color: var(--ink4); margin-bottom: 8px; letter-spacing: 0.05em;">WHAT TO BRING</p>
+      <p style="font-size: 15px; color: var(--ink2); line-height: 1.8;">Your team · Your AI · Your product vision · Your users</p>
+    </div>
+    <div>
+      <p style="font-size: 12px; font-weight: 600; color: var(--ink4); margin-bottom: 8px; letter-spacing: 0.05em;">APPLY</p>
+      <p style="font-size: 15px; color: var(--ink); margin-bottom: 4px;">apply@fountainbuild.ai</p>
+      <p style="font-size: 14px; color: var(--ink3);">fountainbuild.ai</p>
+    </div>
+  </div>
+  <span class="logo-footer"><span class="diamond"></span>FOUNTAIN</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FOUNTAIN — Physical AI Accelerator</title>
+  <meta name="description" content="FOUNTAIN brings AI into the physical world, with builders. Bay Area × Shenzhen."/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-dark: #000510;
+      --bg-mid: #001040;
+      --bg-light: #0050b0;
+      --white: #ffffff;
+      --white-90: rgba(255,255,255,0.9);
+      --white-70: rgba(255,255,255,0.7);
+      --white-50: rgba(255,255,255,0.5);
+      --white-20: rgba(255,255,255,0.2);
+      --white-10: rgba(255,255,255,0.1);
+      --blue-glow: rgba(30,144,255,0.4);
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    
+    /* ══════════ NAV ══════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,5,16,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--white-10);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--white);
+    }
+    
+    .logo-diamond {
+      width: 20px;
+      height: 20px;
+      background: var(--white);
+      transform: rotate(45deg);
+    }
+    
+    .logo-text {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    .nav-links a {
+      font-size: 14px;
+      color: var(--white-70);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--white);
+    }
+    
+    .nav-apply {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white) !important;
+      padding: 10px 24px;
+      background: var(--white-10);
+      border: 1px solid var(--white-20);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    
+    .nav-apply:hover {
+      background: var(--white-20);
+    }
+    
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+    }
+    
+    /* ══════════ HERO ══════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      background: 
+        radial-gradient(ellipse 200% 60% at 50% 120%, var(--blue-glow) 0%, rgba(0,100,200,0.2) 30%, transparent 60%),
+        linear-gradient(180deg, var(--bg-dark) 0%, #000818 50%, var(--bg-mid) 80%, var(--bg-light) 100%);
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(30,144,255,0.15));
+      pointer-events: none;
+    }
+    
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-70);
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--white-70);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--bg-dark);
+      background: var(--white);
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.2);
+    }
+    
+    /* ══════════ SECTIONS ══════════ */
+    section {
+      padding: 120px 48px;
+      position: relative;
+      background: 
+        radial-gradient(ellipse 150% 50% at 50% 100%, rgba(30,144,255,0.1) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-dark) 100%);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-50);
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+    
+    .section-desc {
+      font-size: 17px;
+      color: var(--white-70);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    
+    @media (max-width: 768px) {
+      section { padding: 80px 24px; }
+    }
+    
+    /* ══════════ WHY PHYSICAL AI ══════════ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    
+    .why-card {
+      padding: 32px;
+      background: var(--white-10);
+      border-radius: 12px;
+      border: 1px solid var(--white-10);
+    }
+    
+    .why-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .why-card p {
+      font-size: 15px;
+      color: var(--white-70);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* ══════════ SYSTEM ══════════ */
+    .system-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    
+    .system-card {
+      padding: 40px;
+      background: var(--white-10);
+      border-radius: 12px;
+      border: 1px solid var(--white-10);
+    }
+    
+    .system-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .system-card p {
+      font-size: 16px;
+      color: var(--white-70);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .system-card .arrow {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    
+    @media (max-width: 768px) {
+      .system-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* ══════════ PROGRAM ══════════ */
+    .program-timeline {
+      display: flex;
+      gap: 0;
+      margin-top: 48px;
+      border-top: 2px solid var(--white-20);
+      padding-top: 32px;
+    }
+    
+    .phase {
+      flex: 1;
+      padding-right: 24px;
+    }
+    
+    .phase-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white-50);
+      margin-bottom: 8px;
+    }
+    
+    .phase-loc {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-50);
+      margin-bottom: 8px;
+    }
+    
+    .phase-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .phase-desc {
+      font-size: 13px;
+      color: var(--white-70);
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 900px) {
+      .program-timeline {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .phase { padding-right: 0; padding-bottom: 24px; border-bottom: 1px solid var(--white-10); }
+    }
+    
+    /* ══════════ BATCH ══════════ */
+    .batch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    
+    .batch-card {
+      padding: 32px;
+      background: var(--white-10);
+      border-radius: 12px;
+      border: 1px solid var(--white-10);
+    }
+    
+    .batch-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .batch-card .emoji { font-size: 24px; }
+    .batch-card .launch {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--white-50);
+    }
+    
+    .batch-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .batch-card .location {
+      font-size: 13px;
+      color: var(--white-50);
+      margin-bottom: 12px;
+    }
+    
+    .batch-card .desc {
+      font-size: 15px;
+      color: var(--white-70);
+    }
+    
+    @media (max-width: 900px) {
+      .batch-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* ══════════ TEAM ══════════ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    
+    .team-card {
+      padding: 40px;
+      background: var(--white-10);
+      border-radius: 12px;
+      border: 1px solid var(--white-10);
+    }
+    
+    .team-card .loc {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--white-50);
+      margin-bottom: 12px;
+    }
+    
+    .team-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .team-card .title {
+      font-size: 14px;
+      color: var(--white-50);
+      margin-bottom: 16px;
+    }
+    
+    .team-card p {
+      font-size: 15px;
+      color: var(--white-70);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .team-tag {
+      font-size: 12px;
+      padding: 6px 12px;
+      background: var(--white-10);
+      border-radius: 4px;
+      color: var(--white-70);
+    }
+    
+    @media (max-width: 768px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* ══════════ ADVISORS ══════════ */
+    .advisors-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    
+    .advisor-tag {
+      font-size: 14px;
+      padding: 12px 20px;
+      background: var(--white-10);
+      border-radius: 8px;
+      color: var(--white-70);
+    }
+    
+    /* ══════════ CTA ══════════ */
+    .cta {
+      text-align: center;
+      padding: 120px 24px;
+      background: 
+        radial-gradient(ellipse 100% 80% at 50% 100%, var(--blue-glow) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+    }
+    
+    .cta h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .cta p {
+      font-size: 18px;
+      color: var(--white-70);
+      margin-bottom: 40px;
+    }
+    
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--bg-dark);
+      background: var(--white);
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.2);
+    }
+    
+    .cta-contact {
+      margin-top: 24px;
+      font-size: 15px;
+      color: var(--white-50);
+    }
+    
+    .cta-contact a {
+      color: var(--white-70);
+      text-decoration: none;
+    }
+    
+    /* ══════════ FOOTER ══════════ */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--white-10);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-dark);
+    }
+    
+    footer p {
+      font-size: 13px;
+      color: var(--white-50);
+    }
+    
+    footer a {
+      color: var(--white-50);
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-diamond"></span>
+    <span class="logo-text">FOUNTAIN</span>
+  </a>
+  <div class="nav-links">
+    <a href="#why">Why Physical AI</a>
+    <a href="#program">Program</a>
+    <a href="#builders">Builders</a>
+    <a href="#team">Team</a>
+    <a href="mailto:apply@fountainbuild.ai" class="nav-apply">Apply</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Physical AI Accelerator · Bay Area × Shenzhen</p>
+  <h1>We bring AI into the physical world, with builders.</h1>
+  <p class="hero-sub">From prototype to mass production. 6 months. Silicon Valley thinking × Shenzhen execution.</p>
+  <a href="mailto:apply@fountainbuild.ai" class="hero-cta">Apply to FOUNTAIN →</a>
+</section>
+
+<!-- WHY PHYSICAL AI -->
+<section id="why">
+  <div class="container">
+    <p class="section-label">Why Physical AI</p>
+    <h2 class="section-title">Physical AI is the next distribution layer of intelligence.</h2>
+    <p class="section-desc">AI has scaled rapidly in the digital world. The physical world is only beginning.</p>
+    
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>AI Devices</h3>
+        <p>Standalone hardware powered by on-device intelligence.</p>
+      </div>
+      <div class="why-card">
+        <h3>Wearables & Sensors</h3>
+        <p>Always-on data streams from the body and environment.</p>
+      </div>
+      <div class="why-card">
+        <h3>Embodied Systems</h3>
+        <p>Robotics and intelligent machines acting in the real world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SYSTEM -->
+<section id="system">
+  <div class="container">
+    <p class="section-label">The FOUNTAIN System</p>
+    <h2 class="section-title">We don't just advise. We build alongside founders.</h2>
+    <p class="section-desc">A Physical AI product accelerator built on a bridge between Silicon Valley and Shenzhen.</p>
+    
+    <div class="system-grid">
+      <div class="system-card">
+        <h3>Accelerator Engine</h3>
+        <p>Scaling AI-native teams from prototype to real-world product.</p>
+        <p class="arrow">AI Demo → Physical AI Product</p>
+      </div>
+      <div class="system-card">
+        <h3>Venture Studio</h3>
+        <p>Creating new Physical AI companies from the ground up. FOUNTAIN acts as co-founder.</p>
+        <p class="arrow">Idea → Company</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="container">
+    <p class="section-label">The Program</p>
+    <h2 class="section-title">6 months. From prototype to global launch.</h2>
+    <p class="section-desc">An 18-week build sprint across two continents. Each phase compresses years of learning into weeks.</p>
+    
+    <div class="program-timeline">
+      <div class="phase">
+        <p class="phase-num">Phase 1</p>
+        <p class="phase-loc">San Francisco</p>
+        <p class="phase-title">PMF Alignment</p>
+        <p class="phase-desc">Model fit, market fit, manufacturing fit — solved simultaneously.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-num">Phase 2</p>
+        <p class="phase-loc">Shenzhen</p>
+        <p class="phase-title">Ecosystem Immersion</p>
+        <p class="phase-desc">Factories, supply chains, component markets. Learn how the physical world runs.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-num">Phase 3</p>
+        <p class="phase-loc">SZ & SF</p>
+        <p class="phase-title">Hardware Build</p>
+        <p class="phase-desc">Industrial design, electronics, embedded systems. Merge AI and physical architectures.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-num">Phase 4</p>
+        <p class="phase-loc">Shenzhen</p>
+        <p class="phase-title">EVT Prototypes</p>
+        <p class="phase-desc">3-5 engineering validation units. Tested. Logged. Ready for production.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-num">Phase 5</p>
+        <p class="phase-loc">San Francisco</p>
+        <p class="phase-title">Launch Day</p>
+        <p class="phase-desc">User testing, storytelling, go-to-market. Launch is graduation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH -->
+<section id="builders">
+  <div class="container">
+    <p class="section-label">Builders with us</p>
+    <h2 class="section-title">FOUNTAIN Batch 1</h2>
+    <p class="section-desc">First builders moving into the world.</p>
+    
+    <div class="batch-grid">
+      <div class="batch-card">
+        <div class="top">
+          <span class="emoji">🔖</span>
+          <span class="launch">Q2 2026</span>
+        </div>
+        <h3>Mark</h3>
+        <p class="location">Los Angeles</p>
+        <p class="desc">AI bookmark for reading and knowledge.</p>
+      </div>
+      <div class="batch-card">
+        <div class="top">
+          <span class="emoji">💍</span>
+          <span class="launch">Q2 2026</span>
+        </div>
+        <h3>Sparkring</h3>
+        <p class="location">Shenzhen</p>
+        <p class="desc">AI ring for voice-driven workflows.</p>
+      </div>
+      <div class="batch-card">
+        <div class="top">
+          <span class="emoji">🩺</span>
+          <span class="launch">Q1 2026</span>
+        </div>
+        <h3>Cortexa</h3>
+        <p class="location">Palo Alto</p>
+        <p class="desc">AI medical device for clinical documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">Built by builders, for builders.</h2>
+    <p class="section-desc">Operating between Silicon Valley and Shenzhen.</p>
+    
+    <div class="team-grid">
+      <div class="team-card">
+        <p class="loc">SHENZHEN</p>
+        <h3>Tree Wan</h3>
+        <p class="title">Co-founder</p>
+        <p>Serial software and robotics entrepreneur. A decade of shipping hardware & software to millions of users.</p>
+        <div class="team-tags">
+          <span class="team-tag">Tencent</span>
+          <span class="team-tag">Speedfox</span>
+          <span class="team-tag">See</span>
+          <span class="team-tag">Zeustech</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <p class="loc">SILICON VALLEY</p>
+        <h3>Miki Watanabe</h3>
+        <p class="title">Co-founder</p>
+        <p>Early-stage tech investor and consumer GTM expert. Deep experience in product strategy across US and Asia.</p>
+        <div class="team-tags">
+          <span class="team-tag">HAX Japan</span>
+          <span class="team-tag">McKinsey</span>
+          <span class="team-tag">Stanford MBA</span>
+          <span class="team-tag">TikTok Shop</span>
+        </div>
+      </div>
+    </div>
+    
+    <p class="section-label" style="margin-top: 64px;">Advisory Network</p>
+    <div class="advisors-grid">
+      <span class="advisor-tag">DG Robotics</span>
+      <span class="advisor-tag">Dobot</span>
+      <span class="advisor-tag">Robosen</span>
+      <span class="advisor-tag">Narwal Robot</span>
+      <span class="advisor-tag">Goeroptics</span>
+      <span class="advisor-tag">Liepin</span>
+      <span class="advisor-tag">Watermark Camera</span>
+      <span class="advisor-tag">Neabot</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Building Physical AI?<br/>Let's talk.</h2>
+  <p>Start with a 30-minute conversation.</p>
+  <a href="mailto:apply@fountainbuild.ai" class="cta-btn">Apply to FOUNTAIN →</a>
+  <p class="cta-contact"><a href="mailto:apply@fountainbuild.ai">apply@fountainbuild.ai</a> · fountainbuild.ai</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">
+    <span class="logo-diamond"></span>
+    <span class="logo-text">FOUNTAIN</span>
+  </div>
+  <p>Physical AI Accelerator · Bay Area × Shenzhen · © 2026</p>
+</footer>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Nav background on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50 
+    ? 'rgba(0,5,16,0.95)' 
+    : 'rgba(0,5,16,0.8)';
+});
+</script>
+
+</body>
+</html>

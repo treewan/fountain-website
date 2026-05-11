@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>FOUNTAIN Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #0a0f1a;
+      --bg2: #111827;
+      --blue: #2563eb;
+      --blue-l: #60a5fa;
+      --cyan: #06b6d4;
+      --ink: #f8fafc;
+      --ink2: #94a3b8;
+      --ink3: #64748b;
+      --green: #10b981;
+      --orange: #f59e0b;
+    }
+    
+    html, body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .slide {
+      width: 1280px;
+      height: 720px;
+      padding: 60px 80px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--bg);
+    }
+    
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(37,99,235,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    /* ══════════ SLIDE 1: COVER ══════════ */
+    .slide-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(37,99,235,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(6,182,212,0.06) 0%, transparent 50%),
+        var(--bg);
+    }
+    .slide-cover .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--blue-l);
+      margin-bottom: 40px;
+    }
+    .slide-cover h1 {
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .slide-cover h1 span { color: var(--blue-l); }
+    .slide-cover .tagline {
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .slide-cover .meta {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+    .slide-cover .meta em { color: var(--ink2); font-style: normal; }
+    
+    /* ══════════ SLIDE 2: PROBLEM ══════════ */
+    .slide-problem { padding: 80px; }
+    .slide-problem .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 24px;
+    }
+    .slide-problem h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+      margin-bottom: 48px;
+    }
+    .slide-problem h2 span { color: var(--orange); }
+    .problem-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .problem-point {
+      padding: 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+    .problem-point .icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .problem-point h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .problem-point p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+    
+    /* ══════════ SLIDE 3: SOLUTION ══════════ */
+    .slide-solution { padding: 80px; }
+    .slide-solution .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+    .slide-solution h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+    .slide-solution h2 span { color: var(--green); }
+    .slide-solution .sub {
+      font-size: 20px;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .sol-card {
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(37,99,235,0.05) 100%);
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 12px;
+    }
+    .sol-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sol-card p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+    
+    /* ══════════ SLIDE 4: WHY NOW ══════════ */
+    .slide-whynow { padding: 80px; }
+    .slide-whynow .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 24px;
+    }
+    .slide-whynow h2 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+    .whynow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .whynow-item {
+      text-align: center;
+      padding: 40px 24px;
+      background: rgba(6,182,212,0.05);
+      border: 1px solid rgba(6,182,212,0.12);
+      border-radius: 12px;
+    }
+    .whynow-item .num {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .whynow-item .unit {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink2);
+      margin-bottom: 16px;
+    }
+    .whynow-item p {
+      font-size: 14px;
+      color: var(--ink3);
+      line-height: 1.5;
+    }
+    
+    /* ══════════ SLIDE 5: PROGRAM ══════════ */
+    .slide-program { padding: 80px; }
+    .slide-program .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-l);
+      margin-bottom: 24px;
+    }
+    .slide-program h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+    .timeline {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+    .tl-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .tl-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 3px solid var(--blue-l);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-loc {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-l);
+      margin-bottom: 8px;
+    }
+    .tl-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .tl-desc {
+      font-size: 12px;
+      color: var(--ink3);
+      line-height: 1.4;
+      max-width: 140px;
+      margin: 0 auto;
+    }
+    
+    /* ══════════ SLIDE 6: PORTFOLIO ══════════ */
+    .slide-portfolio { padding: 80px; }
+    .slide-portfolio .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-l);
+      margin-bottom: 24px;
+    }
+    .slide-portfolio h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .slide-portfolio .sub {
+      font-size: 16px;
+      color: var(--ink2);
+      margin-bottom: 40px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .port-card {
+      padding: 32px;
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+    .port-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .port-card .emoji { font-size: 32px; }
+    .port-card .launch {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding: 4px 10px;
+      background: rgba(16,185,129,0.12);
+      border-radius: 4px;
+    }
+    .port-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .port-card .tagline {
+      font-size: 14px;
+      color: var(--ink2);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .port-card .meta {
+      font-size: 12px;
+      color: var(--ink3);
+    }
+    
+    /* ══════════ SLIDE 7: TEAM ══════════ */
+    .slide-team { padding: 80px; }
+    .slide-team .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-l);
+      margin-bottom: 24px;
+    }
+    .slide-team h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+    .team-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .team-founder {
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(6,182,212,0.05) 100%);
+      border: 1px solid rgba(37,99,235,0.15);
+      border-radius: 16px;
+    }
+    .team-founder h3 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .team-founder .title {
+      font-size: 14px;
+      color: var(--blue-l);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .team-founder p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .backers {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .backer {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      color: var(--ink2);
+    }
+    .team-advisory {
+      padding: 40px;
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+    }
+    .team-advisory h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 24px;
+    }
+    .advisors {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .advisor {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .advisor .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue-l);
+    }
+    
+    /* ══════════ SLIDE 8: INVESTMENT ══════════ */
+    .slide-investment { padding: 80px; }
+    .slide-investment .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+    .slide-investment h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+    .invest-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .invest-card {
+      padding: 48px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .invest-card.primary {
+      background: linear-gradient(135deg, rgba(37,99,235,0.15) 0%, rgba(16,185,129,0.1) 100%);
+      border: 2px solid var(--blue-l);
+    }
+    .invest-card.secondary {
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .invest-card .badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      background: var(--blue);
+      border-radius: 4px;
+    }
+    .invest-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      margin-bottom: 16px;
+    }
+    .invest-card .amount {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .invest-card.primary .amount { color: var(--blue-l); }
+    .invest-card.secondary .amount { color: var(--ink); }
+    .invest-card .equity {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink2);
+      margin-bottom: 24px;
+    }
+    .invest-card ul {
+      list-style: none;
+    }
+    .invest-card li {
+      font-size: 14px;
+      color: var(--ink2);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .invest-card li:last-child { border: none; }
+    .invest-card li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+    
+    /* ══════════ SLIDE 9: CTA ══════════ */
+    .slide-cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(37,99,235,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(6,182,212,0.08) 0%, transparent 50%),
+        var(--bg);
+    }
+    .slide-cta h2 {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .slide-cta h2 span { color: var(--blue-l); }
+    .slide-cta .sub {
+      font-size: 20px;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .contact-box {
+      padding: 32px 64px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .contact-box .email {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--blue-l);
+      margin-bottom: 8px;
+    }
+    .contact-box .web {
+      font-size: 16px;
+      color: var(--ink2);
+    }
+    .slide-cta .footer-note {
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--ink3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide slide-cover">
+  <div class="logo">🔹 FOUNTAIN</div>
+  <h1>Physical <span>AI</span><br/>Accelerator</h1>
+  <p class="tagline">From AI demo to shipped product. 6 months.</p>
+  <p class="meta"><em>Bay Area</em> × <em>Shenzhen</em></p>
+</div>
+
+<!-- SLIDE 2: PROBLEM -->
+<div class="slide slide-problem">
+  <p class="label">The Problem</p>
+  <h2>AI has scaled rapidly in the digital world.<br/><span>The physical world is just beginning.</span></h2>
+  <div class="problem-points">
+    <div class="problem-point">
+      <div class="icon">🧠</div>
+      <h3>Model ≠ Product</h3>
+      <p>Building AI models or apps is not the same as shipping physical systems that work in the real world.</p>
+    </div>
+    <div class="problem-point">
+      <div class="icon">🏭</div>
+      <h3>Demo → Production Gap</h3>
+      <p>The gap between a working demo and mass production is vast — supply chain, certification, manufacturing.</p>
+    </div>
+    <div class="problem-point">
+      <div class="icon">🌏</div>
+      <h3>East-West Disconnect</h3>
+      <p>Silicon Valley has the ideas. Shenzhen has the factories. Few can bridge both worlds effectively.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: SOLUTION -->
+<div class="slide slide-solution">
+  <p class="label">Our Solution</p>
+  <h2>We don't just advise.<br/><span>We build alongside founders.</span></h2>
+  <p class="sub">A 6-month sprint from San Francisco to Shenzhen. Launch Day is Graduation Day.</p>
+  <div class="solution-grid">
+    <div class="sol-card">
+      <h3>🛠️ Hands-On Building</h3>
+      <p>We're in the trenches with you — hardware design, firmware, supply chain, factory relationships.</p>
+    </div>
+    <div class="sol-card">
+      <h3>🌐 Global Network</h3>
+      <p>Deep connections in both Bay Area (investors, talent) and Shenzhen (factories, components).</p>
+    </div>
+    <div class="sol-card">
+      <h3>📦 Ship, Not Demo</h3>
+      <p>We don't run a demo day. We ship real products to real customers. Launch is graduation.</p>
+    </div>
+    <div class="sol-card">
+      <h3>💰 Capital + Execution</h3>
+      <p>Funding paired with operational support. Money alone doesn't ship hardware — execution does.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: WHY NOW -->
+<div class="slide slide-whynow">
+  <p class="label">Why Now</p>
+  <h2>The Physical AI moment has arrived.</h2>
+  <div class="whynow-grid">
+    <div class="whynow-item">
+      <div class="num">10×</div>
+      <div class="unit">Cost Reduction</div>
+      <p>AI compute costs dropped 10× in 3 years, making edge AI viable</p>
+    </div>
+    <div class="whynow-item">
+      <div class="num">$2T</div>
+      <div class="unit">Market by 2030</div>
+      <p>Physical AI market projected to reach $2T (McKinsey)</p>
+    </div>
+    <div class="whynow-item">
+      <div class="num">Now</div>
+      <div class="unit">Timing</div>
+      <p>First movers in Physical AI will define the next decade of computing</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: PROGRAM -->
+<div class="slide slide-program">
+  <p class="label">The Program</p>
+  <h2>6 months. Silicon Valley ↔ Shenzhen.</h2>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-dot">1</div>
+      <div class="tl-loc">San Francisco</div>
+      <div class="tl-title">PMF Alignment</div>
+      <div class="tl-desc">Validate product-market fit with real users</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">2</div>
+      <div class="tl-loc">Shenzhen</div>
+      <div class="tl-title">Ecosystem Immersion</div>
+      <div class="tl-desc">Factory tours, supplier intros, local team</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">3</div>
+      <div class="tl-loc">Shenzhen</div>
+      <div class="tl-title">Hardware Build</div>
+      <div class="tl-desc">ID/MD design, PCB, firmware development</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">4</div>
+      <div class="tl-loc">Shenzhen</div>
+      <div class="tl-title">EVT Prototypes</div>
+      <div class="tl-desc">Engineering validation, testing, iteration</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">5</div>
+      <div class="tl-loc">San Francisco</div>
+      <div class="tl-title">Launch Day</div>
+      <div class="tl-desc">Ship to customers. Graduation = Launch.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: PORTFOLIO -->
+<div class="slide slide-portfolio">
+  <p class="label">Batch F1</p>
+  <h2>First builders moving into the world</h2>
+  <p class="sub">Our inaugural cohort spans wearables, health tech, and productivity hardware.</p>
+  <div class="portfolio-grid">
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">🔖</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Mark</h3>
+      <p class="tagline">AI Bookmark for reading and knowledge capture</p>
+      <p class="meta">Eason Tang · Los Angeles</p>
+    </div>
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">💍</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Sparkring</h3>
+      <p class="tagline">AI Ring for voice-powered workflow</p>
+      <p class="meta">Charley Tang · Shenzhen</p>
+    </div>
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">🩺</span>
+        <span class="launch">Q1 2026</span>
+      </div>
+      <h3>Cortexa</h3>
+      <p class="tagline">AI Medical Device for clinical documentation</p>
+      <p class="meta">Jack Lee · Palo Alto</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: TEAM -->
+<div class="slide slide-team">
+  <p class="label">Team</p>
+  <h2>Operators who've shipped hardware at scale</h2>
+  <div class="team-main">
+    <div class="team-founder">
+      <h3>Tree Wan</h3>
+      <div class="title">Co-Founder</div>
+      <p>Founder of Speedfox, See, Zeustech. A decade of shipping software and hardware products to millions of users. Former Tencent PM with 13 international patents.</p>
+      <p><strong>Forbes 30 Under 30 Asia</strong> (Retail & E-commerce, 2017)</p>
+      <div class="backers">
+        <span class="backer">Sequoia</span>
+        <span class="backer">IDG</span>
+        <span class="backer">BAI</span>
+        <span class="backer">Tencent</span>
+        <span class="backer">Alibaba</span>
+      </div>
+    </div>
+    <div class="team-advisory">
+      <h4>Advisory Network</h4>
+      <div class="advisors">
+        <div class="advisor"><span class="dot"></span>DG Robotics</div>
+        <div class="advisor"><span class="dot"></span>Dobot</div>
+        <div class="advisor"><span class="dot"></span>Robosen</div>
+        <div class="advisor"><span class="dot"></span>Narwal Robot</div>
+        <div class="advisor"><span class="dot"></span>Goeroptics</div>
+        <div class="advisor"><span class="dot"></span>Neabot</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: INVESTMENT -->
+<div class="slide slide-investment">
+  <p class="label">Investment</p>
+  <h2>Two ways to work with Fountain</h2>
+  <div class="invest-options">
+    <div class="invest-card primary">
+      <span class="badge">Recommended</span>
+      <h3>Full Partnership</h3>
+      <div class="amount">$500K</div>
+      <div class="equity">for 10% equity</div>
+      <ul>
+        <li>6-month program (SF ↔ Shenzhen)</li>
+        <li>Hardware development support</li>
+        <li>Supply chain & factory access</li>
+        <li>Shenzhen office & local team</li>
+        <li>Investor network introductions</li>
+        <li>Launch day execution support</li>
+      </ul>
+    </div>
+    <div class="invest-card secondary">
+      <h3>Execution Only</h3>
+      <div class="amount">5%</div>
+      <div class="equity">equity (no cash)</div>
+      <ul>
+        <li>6-month program (SF ↔ Shenzhen)</li>
+        <li>Hardware development support</li>
+        <li>Supply chain & factory access</li>
+        <li>Shenzhen office & local team</li>
+        <li>For funded teams who need execution</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: CTA -->
+<div class="slide slide-cta">
+  <h2>Building <span>Physical AI</span>?<br/>Let's talk.</h2>
+  <p class="sub">A 30-minute conversation. Team · AI · Product · Users.</p>
+  <div class="contact-box">
+    <div class="email">apply@fountainbuild.ai</div>
+    <div class="web">fountainbuild.ai</div>
+  </div>
+  <p class="footer-note">🔹 FOUNTAIN · Physical AI Accelerator · Bay Area × Shenzhen</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>FOUNTAIN Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #ffffff;
+      --ink: #0f172a;
+      --ink2: #475569;
+      --ink3: #94a3b8;
+      --blue: #2563eb;
+      --line: #e2e8f0;
+    }
+    
+    html, body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .slide {
+      width: 1280px;
+      height: 720px;
+      padding: 72px 88px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--bg);
+    }
+    
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+    
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    
+    /* ══════════ SLIDE 1: COVER ══════════ */
+    .slide-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-cover h1 {
+      font-size: 72px;
+      margin-bottom: 24px;
+    }
+    .slide-cover .tagline {
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .slide-cover .meta {
+      font-size: 14px;
+      color: var(--ink3);
+    }
+    .slide-cover .logo {
+      position: absolute;
+      top: 72px;
+      left: 88px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    
+    /* ══════════ SLIDE 2: PROBLEM ══════════ */
+    .slide-problem h2 {
+      font-size: 44px;
+      max-width: 900px;
+      margin-bottom: 56px;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+    .problem-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .problem-item p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+    
+    /* ══════════ SLIDE 3: SOLUTION ══════════ */
+    .slide-solution h2 {
+      font-size: 44px;
+      max-width: 700px;
+      margin-bottom: 16px;
+    }
+    .slide-solution .sub {
+      font-size: 18px;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 64px;
+    }
+    .sol-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .sol-item p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+    
+    /* ══════════ SLIDE 4: WHY NOW ══════════ */
+    .slide-whynow h2 {
+      font-size: 44px;
+      margin-bottom: 56px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+    .stat-item {
+      border-left: 3px solid var(--ink);
+      padding-left: 24px;
+    }
+    .stat-item .num {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-item .unit {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink2);
+      margin-bottom: 8px;
+    }
+    .stat-item p {
+      font-size: 14px;
+      color: var(--ink3);
+    }
+    
+    /* ══════════ SLIDE 5: PROGRAM ══════════ */
+    .slide-program h2 {
+      font-size: 44px;
+      margin-bottom: 56px;
+    }
+    .timeline {
+      display: flex;
+      gap: 0;
+      border-top: 2px solid var(--ink);
+      padding-top: 32px;
+    }
+    .tl-step {
+      flex: 1;
+      padding-right: 24px;
+    }
+    .tl-step .num {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .tl-step .loc {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .tl-step .title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tl-step .desc {
+      font-size: 13px;
+      color: var(--ink2);
+    }
+    
+    /* ══════════ SLIDE 6: PORTFOLIO ══════════ */
+    .slide-portfolio h2 {
+      font-size: 44px;
+      margin-bottom: 48px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .port-card {
+      border: 1px solid var(--line);
+      padding: 28px;
+    }
+    .port-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .port-card .emoji { font-size: 24px; }
+    .port-card .launch {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink3);
+    }
+    .port-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .port-card .tagline {
+      font-size: 14px;
+      color: var(--ink2);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .port-card .meta {
+      font-size: 12px;
+      color: var(--ink3);
+    }
+    
+    /* ══════════ SLIDE 7: TEAM ══════════ */
+    .slide-team h2 {
+      font-size: 44px;
+      margin-bottom: 48px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+    .founder h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .founder .title {
+      font-size: 14px;
+      color: var(--ink3);
+      margin-bottom: 20px;
+    }
+    .founder p {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .backers {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .backer {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+    .advisory h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 20px;
+    }
+    .advisors {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .advisor {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink2);
+      padding-left: 16px;
+      border-left: 2px solid var(--line);
+    }
+    
+    /* ══════════ SLIDE 8: INVESTMENT ══════════ */
+    .slide-investment h2 {
+      font-size: 44px;
+      margin-bottom: 48px;
+    }
+    .invest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .invest-card {
+      padding: 40px;
+      border: 1px solid var(--line);
+    }
+    .invest-card.primary {
+      border: 2px solid var(--ink);
+    }
+    .invest-card .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 16px;
+    }
+    .invest-card .amount {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .invest-card .equity {
+      font-size: 18px;
+      color: var(--ink2);
+      margin-bottom: 24px;
+    }
+    .invest-card ul {
+      list-style: none;
+    }
+    .invest-card li {
+      font-size: 14px;
+      color: var(--ink2);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .invest-card li:last-child { border: none; }
+    
+    /* ══════════ SLIDE 9: CTA ══════════ */
+    .slide-cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-cta h2 {
+      font-size: 56px;
+      margin-bottom: 16px;
+    }
+    .slide-cta .sub {
+      font-size: 18px;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .slide-cta .email {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .slide-cta .web {
+      font-size: 16px;
+      color: var(--ink3);
+    }
+    .slide-cta .footer {
+      position: absolute;
+      bottom: 72px;
+      left: 88px;
+      font-size: 13px;
+      color: var(--ink3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide slide-cover">
+  <div class="logo">FOUNTAIN</div>
+  <h1>Physical AI<br/>Accelerator</h1>
+  <p class="tagline">From AI demo to shipped product. 6 months.</p>
+  <p class="meta">Bay Area × Shenzhen</p>
+</div>
+
+<!-- SLIDE 2: PROBLEM -->
+<div class="slide slide-problem">
+  <p class="label">The Problem</p>
+  <h2>AI has scaled rapidly in the digital world.<br/>The physical world is just beginning.</h2>
+  <div class="problem-grid">
+    <div class="problem-item">
+      <h3>Model ≠ Product</h3>
+      <p>Building AI models or apps is not the same as shipping physical systems that work in the real world.</p>
+    </div>
+    <div class="problem-item">
+      <h3>Demo → Production Gap</h3>
+      <p>The gap between a working demo and mass production is vast — supply chain, certification, manufacturing.</p>
+    </div>
+    <div class="problem-item">
+      <h3>East-West Disconnect</h3>
+      <p>Silicon Valley has the ideas. Shenzhen has the factories. Few can bridge both worlds effectively.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: SOLUTION -->
+<div class="slide slide-solution">
+  <p class="label">Our Solution</p>
+  <h2>We don't just advise.<br/>We build alongside founders.</h2>
+  <p class="sub">A 6-month sprint from San Francisco to Shenzhen. Launch Day is Graduation Day.</p>
+  <div class="solution-grid">
+    <div class="sol-item">
+      <h3>Hands-On Building</h3>
+      <p>We're in the trenches — hardware design, firmware, supply chain, factory relationships.</p>
+    </div>
+    <div class="sol-item">
+      <h3>Global Network</h3>
+      <p>Deep connections in both Bay Area (investors, talent) and Shenzhen (factories, components).</p>
+    </div>
+    <div class="sol-item">
+      <h3>Ship, Not Demo</h3>
+      <p>We don't run a demo day. We ship real products to real customers.</p>
+    </div>
+    <div class="sol-item">
+      <h3>Capital + Execution</h3>
+      <p>Funding paired with operational support. Money alone doesn't ship hardware.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: WHY NOW -->
+<div class="slide slide-whynow">
+  <p class="label">Why Now</p>
+  <h2>The Physical AI moment has arrived.</h2>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="num">10×</div>
+      <div class="unit">Cost Reduction</div>
+      <p>AI compute costs dropped 10× in 3 years, making edge AI viable</p>
+    </div>
+    <div class="stat-item">
+      <div class="num">$2T</div>
+      <div class="unit">Market by 2030</div>
+      <p>Physical AI market projected to reach $2T (McKinsey)</p>
+    </div>
+    <div class="stat-item">
+      <div class="num">Now</div>
+      <div class="unit">Timing</div>
+      <p>First movers in Physical AI will define the next decade</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: PROGRAM -->
+<div class="slide slide-program">
+  <p class="label">The Program</p>
+  <h2>6 months. Silicon Valley ↔ Shenzhen.</h2>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="num">01</div>
+      <div class="loc">San Francisco</div>
+      <div class="title">PMF Alignment</div>
+      <div class="desc">Validate product-market fit</div>
+    </div>
+    <div class="tl-step">
+      <div class="num">02</div>
+      <div class="loc">Shenzhen</div>
+      <div class="title">Ecosystem Immersion</div>
+      <div class="desc">Factory tours, supplier intros</div>
+    </div>
+    <div class="tl-step">
+      <div class="num">03</div>
+      <div class="loc">Shenzhen</div>
+      <div class="title">Hardware Build</div>
+      <div class="desc">ID/MD, PCB, firmware</div>
+    </div>
+    <div class="tl-step">
+      <div class="num">04</div>
+      <div class="loc">Shenzhen</div>
+      <div class="title">EVT Prototypes</div>
+      <div class="desc">Engineering validation</div>
+    </div>
+    <div class="tl-step">
+      <div class="num">05</div>
+      <div class="loc">San Francisco</div>
+      <div class="title">Launch Day</div>
+      <div class="desc">Ship to customers</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: PORTFOLIO -->
+<div class="slide slide-portfolio">
+  <p class="label">Batch F1</p>
+  <h2>First builders moving into the world</h2>
+  <div class="portfolio-grid">
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">🔖</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Mark</h3>
+      <p class="tagline">AI Bookmark for reading and knowledge capture</p>
+      <p class="meta">Eason Tang · Los Angeles</p>
+    </div>
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">💍</span>
+        <span class="launch">Q2 2026</span>
+      </div>
+      <h3>Sparkring</h3>
+      <p class="tagline">AI Ring for voice-powered workflow</p>
+      <p class="meta">Charley Tang · Shenzhen</p>
+    </div>
+    <div class="port-card">
+      <div class="top">
+        <span class="emoji">🩺</span>
+        <span class="launch">Q1 2026</span>
+      </div>
+      <h3>Cortexa</h3>
+      <p class="tagline">AI Medical Device for clinical documentation</p>
+      <p class="meta">Jack Lee · Palo Alto</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: TEAM -->
+<div class="slide slide-team">
+  <p class="label">Team</p>
+  <h2>Operators who've shipped at scale</h2>
+  <div class="team-grid">
+    <div class="founder">
+      <h3>Tree Wan</h3>
+      <div class="title">Co-Founder</div>
+      <p>Founder of Speedfox, See, Zeustech. A decade of shipping software and hardware products to millions of users. Former Tencent PM with 13 international patents.</p>
+      <p><strong>Forbes 30 Under 30 Asia</strong> · Retail & E-commerce, 2017</p>
+      <div class="backers">
+        <span class="backer">Sequoia</span>
+        <span class="backer">·</span>
+        <span class="backer">IDG</span>
+        <span class="backer">·</span>
+        <span class="backer">BAI</span>
+        <span class="backer">·</span>
+        <span class="backer">Tencent</span>
+        <span class="backer">·</span>
+        <span class="backer">Alibaba</span>
+      </div>
+    </div>
+    <div class="advisory">
+      <h4>Advisory Network</h4>
+      <div class="advisors">
+        <div class="advisor">DG Robotics</div>
+        <div class="advisor">Dobot</div>
+        <div class="advisor">Robosen</div>
+        <div class="advisor">Narwal Robot</div>
+        <div class="advisor">Goeroptics</div>
+        <div class="advisor">Neabot</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: INVESTMENT -->
+<div class="slide slide-investment">
+  <p class="label">Investment</p>
+  <h2>Two ways to work with Fountain</h2>
+  <div class="invest-grid">
+    <div class="invest-card primary">
+      <div class="tag">Full Partnership</div>
+      <div class="amount">$500K</div>
+      <div class="equity">for 10% equity</div>
+      <ul>
+        <li>6-month program (SF ↔ Shenzhen)</li>
+        <li>Hardware development support</li>
+        <li>Supply chain & factory access</li>
+        <li>Shenzhen office & local team</li>
+        <li>Investor network introductions</li>
+        <li>Launch day execution support</li>
+      </ul>
+    </div>
+    <div class="invest-card">
+      <div class="tag">Execution Only</div>
+      <div class="amount">5%</div>
+      <div class="equity">equity (no cash)</div>
+      <ul>
+        <li>6-month program (SF ↔ Shenzhen)</li>
+        <li>Hardware development support</li>
+        <li>Supply chain & factory access</li>
+        <li>Shenzhen office & local team</li>
+        <li>For funded teams who need execution</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: CTA -->
+<div class="slide slide-cta">
+  <h2>Building Physical AI?<br/>Let's talk.</h2>
+  <p class="sub">A 30-minute conversation. Team · AI · Product · Users.</p>
+  <p class="email">apply@fountainbuild.ai</p>
+  <p class="web">fountainbuild.ai</p>
+  <p class="footer">FOUNTAIN · Physical AI Accelerator · Bay Area × Shenzhen</p>
+</div>
+
+</body>
+</html>

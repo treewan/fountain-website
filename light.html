@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FOUNTAIN — Physical AI Accelerator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#ffffff;
+      --bg2:#f8f9fc;
+      --bg3:#f1f4fa;
+      --blue:#1d4ed8;
+      --blue-l:#2563eb;
+      --ink:#0f172a;
+      --ink2:#475569;
+      --ink3:#94a3b8;
+      --border:#e2e8f0;
+    }
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;padding:0 56px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .nav-apply{font-size:13px;font-weight:600;color:#fff;text-decoration:none;padding:7px 18px;background:var(--blue);border-radius:6px;transition:all .2s}
+    .nav-apply:hover{background:var(--blue-l);box-shadow:0 2px 12px rgba(29,78,216,.25)}
+    @media(max-width:600px){nav{padding:0 20px}}
+
+    /* ── HERO: direct, confident ── */
+    #hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;padding:100px 56px 80px;max-width:1080px;margin:0 auto}
+    .hero-left{}
+    .hero-tag{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-l);margin-bottom:20px}
+    .hero-h{font-size:clamp(38px,5vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px;color:var(--ink)}
+    .hero-p{font-size:16px;color:var(--ink2);line-height:1.75;margin-bottom:36px;max-width:400px}
+    .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;font-size:14px;font-weight:600;text-decoration:none;padding:11px 24px;border-radius:7px;transition:all .2s;letter-spacing:.01em}
+    .btn-fill{background:var(--blue);color:#fff}
+    .btn-fill:hover{background:var(--blue-l);box-shadow:0 4px 14px rgba(29,78,216,.28);transform:translateY(-1px)}
+    .btn-soft{background:var(--bg2);color:var(--ink2);border:1px solid var(--border)}
+    .btn-soft:hover{background:var(--bg3);color:var(--ink)}
+    .hero-right{display:flex;flex-direction:column;gap:16px}
+    .hero-stat{padding:24px 28px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;transition:border-color .2s}
+    .hero-stat:hover{border-color:#93c5fd}
+    .hs-val{font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px}
+    .hs-val em{font-style:normal;color:var(--blue-l)}
+    .hs-label{font-size:12px;color:var(--ink3);letter-spacing:.04em}
+    @media(max-width:800px){#hero{grid-template-columns:1fr;padding:90px 20px 60px;gap:48px}.hero-right{flex-direction:row;flex-wrap:wrap}.hero-stat{flex:1;min-width:140px}}
+
+    /* ── PROGRAM ── */
+    #program{background:var(--bg2);padding:96px 0}
+    .pw{max-width:1080px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .prog-left{position:sticky;top:80px}
+    .sec-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px}
+    .prog-left h2{font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:20px;color:var(--ink)}
+    .prog-left p{font-size:15px;color:var(--ink2);line-height:1.75}
+    .prog-left strong{color:var(--ink);font-weight:600}
+    .prog-steps{display:flex;flex-direction:column;gap:0}
+    .step{padding:20px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:baseline}
+    .step:first-child{border-top:1px solid var(--border)}
+    .step-loc{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase}
+    .step-event{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+    @media(max-width:800px){.pw{grid-template-columns:1fr;gap:40px;padding:0 20px}.prog-left{position:static}}
+
+    /* ── BATCH ── */
+    #batch{padding:96px 0}
+    .bw{max-width:1080px;margin:0 auto;padding:0 56px}
+    .batch-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px}
+    .batch-head h2{font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+    .batch-head a{font-size:13px;color:var(--blue-l);text-decoration:none;font-weight:500}
+    .batch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .bc{border:1px solid var(--border);border-radius:10px;padding:24px;background:var(--bg);transition:border-color .2s,transform .2s;cursor:default}
+    .bc:hover{border-color:#93c5fd;transform:translateY(-2px)}
+    .bc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .bc-emoji{font-size:18px}
+    .bc-launch{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+    .bc-name{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em}
+    .bc-tagline{font-size:13px;color:var(--ink2);margin-bottom:14px;line-height:1.4}
+    .bc-meta{font-size:11px;color:var(--ink3)}
+    @media(max-width:640px){.batch-grid{grid-template-columns:1fr}.bw{padding:0 20px}.batch-head{flex-direction:column;gap:8px}}
+
+    /* ── TEAM STRIP ── */
+    #team{background:var(--bg2);padding:64px 0;border-top:1px solid var(--border)}
+    .tw{max-width:1080px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+    .team-pre{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+    .team-info{}
+    .team-name{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px}
+    .team-bio{font-size:13px;color:var(--ink2);line-height:1.5}
+    .team-backed{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .backer{font-size:11px;padding:2px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink3);background:var(--bg)}
+    .team-divider{width:1px;height:48px;background:var(--border);flex-shrink:0}
+    .adv-list{display:flex;flex-wrap:wrap;gap:6px}
+    .adv{font-size:11px;padding:3px 10px;border:1px solid var(--border);border-radius:3px;color:var(--ink3)}
+    @media(max-width:800px){.tw{padding:0 20px;flex-direction:column;gap:28px}.team-divider{width:100%;height:1px}}
+
+    /* ── CTA ── */
+    #cta{padding:96px 56px;text-align:center;max-width:1080px;margin:0 auto}
+    #cta h2{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.025em;margin-bottom:14px;color:var(--ink)}
+    #cta p{font-size:16px;color:var(--ink2);margin-bottom:36px;line-height:1.7}
+    .cta-foot{margin-top:14px;font-size:12px;color:var(--ink3)}
+    .cta-foot a{color:var(--blue-l);text-decoration:none}
+    @media(max-width:600px){#cta{padding:72px 20px}}
+
+    footer{border-top:1px solid var(--border);padding:24px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--bg)}
+    footer p{font-size:11px;color:var(--ink3)}
+    footer a{color:var(--ink3);text-decoration:none}
+    @media(max-width:600px){footer{padding:20px}}
+
+    [data-r]{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+    [data-r].in{opacity:1;transform:none}
+    [data-r][data-d="1"]{transition-delay:.1s}
+    [data-r][data-d="2"]{transition-delay:.2s}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">🔹 Fountain</a>
+  <a href="mailto:apply@fountainbuild.ai" class="nav-apply">Apply Now</a>
+</nav>
+
+<!-- HERO: credibility-first, direct -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-tag" data-r>Physical AI Accelerator · Bay Area × Shenzhen</p>
+    <h1 class="hero-h" data-r>From AI demo<br/>to Physical AI<br/>product.</h1>
+    <p class="hero-p" data-r>We build alongside founders — hardware, supply chain, and global launch. 6 months, Silicon Valley to Shenzhen.</p>
+    <div class="hero-btns" data-r data-d="1">
+      <a href="mailto:apply@fountainbuild.ai" class="btn btn-fill">Apply Now →</a>
+      <a href="#program" class="btn btn-soft">How it works</a>
+    </div>
+  </div>
+  <div class="hero-right" data-r data-d="1">
+    <div class="hero-stat">
+      <div class="hs-val">6 <em>months</em></div>
+      <div class="hs-label">From prototype to global launch</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-val"><em>SF</em> × <em>SZ</em></div>
+      <div class="hs-label">Silicon Valley thinking · Shenzhen execution</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-val">Day <em>1</em></div>
+      <div class="hs-label">Consumer launch — not a demo day</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM: structured, clear -->
+<section id="program">
+  <div class="pw">
+    <div class="prog-left">
+      <p class="sec-label" data-r>The Program</p>
+      <h2 data-r>We don't just advise.<br/>We build alongside founders.</h2>
+      <p data-r>A 6-month sprint across San Francisco and Shenzhen. <strong>Launch Day is Graduation Day</strong> — we ship Physical AI, not demos.</p>
+    </div>
+    <div class="prog-steps" data-r>
+      <div class="step">
+        <span class="step-loc">San Francisco</span>
+        <span class="step-event">PMF Alignment</span>
+      </div>
+      <div class="step">
+        <span class="step-loc">Shenzhen</span>
+        <span class="step-event">Ecosystem Immersion</span>
+      </div>
+      <div class="step">
+        <span class="step-loc">Shenzhen</span>
+        <span class="step-event">Hardware Build</span>
+      </div>
+      <div class="step">
+        <span class="step-loc">Shenzhen</span>
+        <span class="step-event">EVT Prototypes</span>
+      </div>
+      <div class="step">
+        <span class="step-loc">San Francisco</span>
+        <span class="step-event">Launch Day</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH F1 -->
+<section id="batch">
+  <div class="bw">
+    <div class="batch-head" data-r>
+      <h2>Batch F1</h2>
+      <span style="font-size:12px;color:var(--ink3)">First builders moving into the world</span>
+    </div>
+    <div class="batch-grid">
+      <div class="bc" data-r>
+        <div class="bc-top"><span class="bc-emoji">🔖</span><span class="bc-launch">Q2 2026</span></div>
+        <div class="bc-name">Mark</div>
+        <div class="bc-tagline">AI Bookmark for reading and knowledge</div>
+        <div class="bc-meta">Eason Tang · Los Angeles · mark.engineering</div>
+      </div>
+      <div class="bc" data-r data-d="1">
+        <div class="bc-top"><span class="bc-emoji">💍</span><span class="bc-launch">Q2 2026</span></div>
+        <div class="bc-name">Sparkring</div>
+        <div class="bc-tagline">AI Ring for voice workflow</div>
+        <div class="bc-meta">Charley Tang · Shenzhen · sparkring.ai</div>
+      </div>
+      <div class="bc" data-r data-d="2">
+        <div class="bc-top"><span class="bc-emoji">🩺</span><span class="bc-launch">Q1 2026</span></div>
+        <div class="bc-name">Cortexa</div>
+        <div class="bc-tagline">AI Medical Device for clinical documentation</div>
+        <div class="bc-meta">Jack Lee · Palo Alto · cortexanote.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM STRIP -->
+<section id="team">
+  <div class="tw">
+    <span class="team-pre" data-r>Built by</span>
+    <div class="team-info" data-r>
+      <div class="team-name">Tree Wan · Co-Founder</div>
+      <div class="team-bio">Founder of Speedfox, See, Zeustech. Decade of software & hardware to millions of users.</div>
+      <div class="team-backed">
+        <span class="backer">Sequoia</span><span class="backer">IDG</span><span class="backer">BAI</span><span class="backer">Tencent</span><span class="backer">Alibaba</span>
+      </div>
+    </div>
+    <div class="team-divider"></div>
+    <div data-r>
+      <div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Advisory Board</div>
+      <div class="adv-list">
+        <span class="adv">DG Robotics</span><span class="adv">Dobot</span><span class="adv">Robosen</span><span class="adv">Narwal Robot</span><span class="adv">Goeroptics</span><span class="adv">Neabot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div data-r>
+    <p style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px">Join Fountain</p>
+    <h2>Building Physical AI?<br/>We should talk.</h2>
+    <p>A 30-minute conversation. Team · AI · Product · Users.</p>
+    <a href="mailto:apply@fountainbuild.ai" class="btn btn-fill" style="font-size:14px;padding:13px 36px">Apply to Fountain →</a>
+    <p class="cta-foot"><a href="mailto:apply@fountainbuild.ai">apply@fountainbuild.ai</a> · fountainbuild.ai</p>
+  </div>
+</section>
+
+<footer>
+  <p>🔹 FOUNTAIN · Physical AI Accelerator · Bay Area × Shenzhen</p>
+  <p>© 2025 Fountain · <a href="mailto:apply@fountainbuild.ai">apply@fountainbuild.ai</a></p>
+</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.1,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

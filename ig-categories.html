@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      width: 1080px;
+      height: 1080px;
+      background: linear-gradient(180deg, #000510 0%, #001040 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      padding: 80px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .diamond {
+      width: 20px;
+      height: 20px;
+      background: white;
+      transform: rotate(45deg);
+    }
+    
+    .logo-text {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 4px;
+    }
+    
+    h1 {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+      max-width: 800px;
+    }
+    
+    .category {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 32px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .category-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e90ff, #0050b0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    
+    .category-content {
+      flex: 1;
+    }
+    
+    .category-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .category-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    
+    .footer {
+      margin-top: 48px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <div class="diamond"></div>
+      <span class="logo-text">FOUNTAIN</span>
+    </div>
+    <h1>Physical AI</h1>
+    <p class="subtitle">The next distribution layer of intelligence</p>
+  </div>
+  
+  <div class="categories">
+    <div class="category">
+      <div class="category-icon">📱</div>
+      <div class="category-content">
+        <div class="category-title">AI Devices</div>
+        <div class="category-desc">Standalone hardware with on-device intelligence</div>
+      </div>
+    </div>
+    
+    <div class="category">
+      <div class="category-icon">⌚</div>
+      <div class="category-content">
+        <div class="category-title">Wearables & Sensors</div>
+        <div class="category-desc">Always-on data from body and environment</div>
+      </div>
+    </div>
+    
+    <div class="category">
+      <div class="category-icon">🤖</div>
+      <div class="category-content">
+        <div class="category-title">Embodied Systems</div>
+        <div class="category-desc">Robots and machines that act in the real world</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">fountainbuild.ai</div>
+</body>
+</html>
