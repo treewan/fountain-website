@@ -140,14 +140,13 @@
       margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       font-weight: 600;
     }
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
+    .eyebrow .mark {
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 0;
     }
     h1.title {
       font-size: clamp(40px, 6vw, 64px);
@@ -468,9 +467,17 @@
 
     @media (max-width: 720px) {
       .page { padding: 112px 24px 80px; }
-      .masthead { font-size: 10px; }
-      .masthead .meta { gap: 16px; }
       .meta-strip { gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      .masthead {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+      }
+      .masthead .meta { gap: 14px; }
     }
   </style>
 </head>
@@ -498,7 +505,7 @@
 
     <!-- ══════════ HERO ══════════ -->
     <section class="hero">
-      <div class="eyebrow mono">Accelerator Application</div>
+      <div class="eyebrow mono"><span class="mark">🔹</span> Accelerator Application</div>
       <h1 class="title">
         We back early-stage<br>
         <span class="accent">Physical AI</span> founders.
@@ -519,7 +526,6 @@
       <!-- ══════════ SECTION 1 ══════════ -->
       <section class="section">
         <div class="section-head">
-          <span class="section-num mono">§ 01</span>
           <span class="section-title">Who you are</span>
         </div>
 
@@ -558,7 +564,6 @@
       <!-- ══════════ SECTION 2 ══════════ -->
       <section class="section">
         <div class="section-head">
-          <span class="section-num mono">§ 02</span>
           <span class="section-title">What you're building</span>
         </div>
 
@@ -678,7 +683,6 @@
       <!-- ══════════ SECTION 3 ══════════ -->
       <section class="section">
         <div class="section-head">
-          <span class="section-num mono">§ 03</span>
           <span class="section-title">You and FOUNTAIN</span>
         </div>
 
