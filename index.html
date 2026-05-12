@@ -1430,6 +1430,119 @@
         padding: 24px;
       }
     }
+
+    /* ══════════ AGENT SECTION ══════════ */
+    .agent-section {
+      padding: 100px 48px;
+      background: linear-gradient(180deg, #05051a 0%, #0a1228 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-section::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .agent-section .section-label { color: rgba(165,180,252,0.7); }
+    .agent-section .section-title {
+      color: var(--white);
+      max-width: 700px;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: -0.03em;
+      margin-bottom: 48px;
+    }
+
+    .agent-method {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .agent-method-tag {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white-70);
+      padding: 8px 18px;
+      border: 1px solid var(--white-20);
+      border-radius: 100px;
+    }
+    .agent-method-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--white-50);
+    }
+
+    .agent-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--white-10);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .agent-feature {
+      background: rgba(10,18,40,0.9);
+      padding: 40px 32px;
+      transition: background 0.25s;
+    }
+    .agent-feature:hover {
+      background: rgba(20,28,60,0.9);
+    }
+    .agent-feature-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--white-50);
+      margin-bottom: 16px;
+    }
+    .agent-feature h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .agent-feature p {
+      font-size: 14px;
+      color: var(--white-70);
+      line-height: 1.6;
+    }
+
+    .agent-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+      letter-spacing: -0.01em;
+    }
+    .agent-cta-btn:hover {
+      background: var(--white-90);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .agent-section { padding: 80px 24px; }
+      .agent-features { grid-template-columns: 1fr; }
+      .agent-feature { padding: 32px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -1450,6 +1563,7 @@
     <a href="#ventures">Ventures</a>
     <a href="#program">Program</a>
     <a href="#studio">Studio</a>
+    <a href="#agent">Agent</a>
     <a href="#builders">Builders</a>
     <a href="#team">Team</a>
     <a href="/apply.html" class="nav-apply">Apply</a>
@@ -1742,6 +1856,44 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/The_University_of_California_UCLA.svg/200px-The_University_of_California_UCLA.svg.png" alt="UCLA" onerror="this.outerHTML='<span>UCLA</span>'">
       </div>
     </div>
+  </div>
+</section>
+
+<!-- AGENT -->
+<section class="agent-section" id="agent">
+  <div class="container">
+    <p class="section-label fade-in">🔹 FOUNTAIN Agent</p>
+    <h2 class="section-title fade-in">The First Physical AI Agent.</h2>
+
+    <div class="agent-method fade-in">
+      <span class="agent-method-tag">4 Dimensions</span>
+      <span class="agent-method-dot"></span>
+      <span class="agent-method-tag">3 Filters</span>
+      <span class="agent-method-dot"></span>
+      <span class="agent-method-tag">Decision Matrix</span>
+    </div>
+
+    <div class="agent-features stagger">
+      <div class="agent-feature">
+        <p class="agent-feature-num">01</p>
+        <h4>Compose</h4>
+        <p>Define your Physical AI product through a structured decision matrix — AI capability, physical capability, form factor, and target user.</p>
+      </div>
+      <div class="agent-feature">
+        <p class="agent-feature-num">02</p>
+        <h4>Discovery</h4>
+        <p>Explore trending concepts, browse community-voted ideas, and discover what's gaining traction in the Physical AI landscape.</p>
+      </div>
+      <div class="agent-feature">
+        <p class="agent-feature-num">03</p>
+        <h4>Breakdown</h4>
+        <p>Get AI-generated product analysis — market fit scoring, technical feasibility, and go-to-market strategy in seconds.</p>
+      </div>
+    </div>
+
+    <a href="https://agent.fountainbuild.ai" target="_blank" rel="noopener" class="agent-cta-btn fade-in">
+      Try FOUNTAIN Agent →
+    </a>
   </div>
 </section>
 

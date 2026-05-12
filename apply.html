@@ -405,6 +405,61 @@
     .submit-block {
       margin-top: 56px;
     }
+    .submit-block.is-submitting button.submit { opacity: 0.6; pointer-events: none; }
+    .submit-error {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #fff5f5;
+      border-left: 3px solid #b3261e;
+      color: #b3261e;
+      font-size: 13px;
+      line-height: 1.5;
+      display: none;
+    }
+    .submit-error.show { display: block; }
+
+    .success-state {
+      display: none;
+      padding: 80px 0;
+      text-align: center;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .success-state.show { display: block; }
+    .success-state .check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+    .success-state h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .success-state p {
+      font-size: 16px;
+      color: var(--ink-2);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .success-state .back-link {
+      display: inline-block;
+      margin-top: 32px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .success-state .back-link:hover { text-decoration: underline; }
     .submit-meta {
       font-size: 14px;
       color: var(--ink-3);
@@ -727,15 +782,28 @@
       </section>
 
       <!-- ══════════ SUBMIT ══════════ -->
-      <div class="submit-block">
+      <div class="submit-block" id="submit-block">
         <p class="submit-meta">
           On submission, you'll receive an automatic confirmation. We'll respond within
           one week — either with a first-call invite, or with substantive feedback.
         </p>
-        <button type="submit" class="submit">Submit Application</button>
+        <button type="submit" class="submit" id="submit-btn">Submit Application</button>
+        <div class="submit-error" id="submit-error"></div>
       </div>
 
     </form>
+
+    <!-- Success state (hidden by default) -->
+    <div class="success-state" id="success-state">
+      <div class="check">✓</div>
+      <h2>Application received.</h2>
+      <p>
+        Thanks for applying to FOUNTAIN. A confirmation email is on its way.
+        We'll respond within one week — either with a first-call invite,
+        or with substantive feedback.
+      </p>
+      <a class="back-link" href="/">← Back to fountainbuild.ai</a>
+    </div>
 
     <footer>
       <span>© 2026 FOUNTAIN · Physical AI</span>
@@ -764,83 +832,77 @@
     bindCounter('ask', 'ask-counter', 300);
     bindCounter('extra', 'extra-counter', 300);
 
-    // Form submission — generate email template and open user's mail client
-    function val(name) {
-      const el = document.querySelector(`[name="${name}"]`);
-      if (!el) return '';
-      if (el.type === 'radio') {
-        const checked = document.querySelector(`[name="${name}"]:checked`);
-        return checked ? checked.value : '';
+    // Form submission — POST to /api/apply
+    const form = document.getElementById('apply-form');
+    const submitBlock = document.getElementById('submit-block');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitError = document.getElementById('submit-error');
+    const successState = document.getElementById('success-state');
+
+    function collectFormData() {
+      const data = {};
+      const formData = new FormData(form);
+      for (const [key, value] of formData.entries()) {
+        // Trim strings; ignore empties so server validation message is accurate
+        const v = typeof value === 'string' ? value.trim() : value;
+        if (v !== '') data[key] = v;
       }
-      return (el.value || '').trim();
+      return data;
     }
 
-    function line(label, value) {
-      return value ? `${label}: ${value}` : `${label}: —`;
+    function showError(msg) {
+      submitError.textContent = msg;
+      submitError.classList.add('show');
+      submitError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    function buildEmail() {
-      const name = val('name');
-      const project = val('project');
-      const subject = `[Apply] ${project || 'Untitled'} — ${name || 'Anonymous'}`;
-
-      const formChoice = val('form');
-      const formOther = val('form_other');
-      const formText = formChoice === 'other' && formOther ? `Other — ${formOther}` : formChoice;
-
-      const fundingChoice = val('funding');
-      const fundingOther = val('funding_other');
-      const fundingText = fundingOther ? `${fundingChoice} (${fundingOther})` : fundingChoice;
-
-      const source = val('source');
-      const sourceDetail = val('source_detail');
-      const sourceText = sourceDetail ? `${source} (${sourceDetail})` : source;
-
-      const body = [
-        'FOUNTAIN — Accelerator Application',
-        '═══════════════════════════════════════',
-        '',
-        '— Who you are —',
-        line('Name', name),
-        line('Email', val('email')),
-        line('LinkedIn / website', val('link')),
-        line('Location', val('location')),
-        '',
-        '— What you\'re building —',
-        line('Project name', project),
-        line('Project website', val('project_site')),
-        line('Social (X / LinkedIn)', val('project_social')),
-        line('One-liner', val('oneliner')),
-        line('Form factor', formText),
-        line('Current stage', val('stage')),
-        line('Funding stage', fundingText),
-        line('Pitch deck', val('deck')),
-        line('Demo video / photo', val('demo')),
-        '',
-        '— You and FOUNTAIN —',
-        'Why FOUNTAIN:',
-        val('why') || '—',
-        '',
-        line('How did you hear', sourceText),
-        '',
-        'Anything else:',
-        val('extra') || '—',
-        '',
-        '— Submitted via fountainbuild.ai/apply —'
-      ].join('\n');
-
-      return { subject, body };
+    function clearError() {
+      submitError.classList.remove('show');
+      submitError.textContent = '';
     }
 
-    document.getElementById('apply-form').addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const { subject, body } = buildEmail();
-      const to = ['tree@fountainbuild.ai', 'miki@fountainbuild.ai', 'apply@fountainbuild.ai'].join(',');
-      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = url;
-      setTimeout(() => {
-        alert('Your mail client should open with your application pre-filled. Please review and send. If nothing opened, please email apply@fountainbuild.ai directly.');
-      }, 400);
+      clearError();
+
+      // HTML5 reportValidity covers required + email format
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBlock.classList.add('is-submitting');
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        const res = await fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(collectFormData()),
+        });
+
+        const result = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          const msg = result.missing && result.missing.length
+            ? `Missing required fields: ${result.missing.join(', ')}`
+            : (result.error || `Submission failed (${res.status}). Please email apply@fountainbuild.ai directly.`);
+          showError(msg);
+          submitBlock.classList.remove('is-submitting');
+          submitBtn.textContent = 'Submit Application';
+          return;
+        }
+
+        // Success — swap form for success state
+        form.style.display = 'none';
+        successState.classList.add('show');
+        successState.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        console.error('Submit error:', err);
+        showError('Network error. Please check your connection and try again, or email apply@fountainbuild.ai directly.');
+        submitBlock.classList.remove('is-submitting');
+        submitBtn.textContent = 'Submit Application';
+      }
     });
   </script>
 
