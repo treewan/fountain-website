@@ -1434,25 +1434,14 @@
     /* ══════════ AGENT SECTION ══════════ */
     .agent-section {
       padding: 100px 48px;
-      background: linear-gradient(180deg, #05051a 0%, #0a1228 100%);
-      color: var(--white);
+      background: var(--bg-gray);
+      color: var(--ink);
       position: relative;
       overflow: hidden;
     }
-    .agent-section::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .agent-section .section-label { color: rgba(165,180,252,0.7); }
+    .agent-section .section-label { color: var(--ink4); }
     .agent-section .section-title {
-      color: var(--white);
+      color: var(--ink);
       max-width: 700px;
       font-size: clamp(32px, 5vw, 48px);
       letter-spacing: -0.03em;
@@ -1470,51 +1459,52 @@
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: var(--white-70);
+      color: var(--ink2);
       padding: 8px 18px;
-      border: 1px solid var(--white-20);
+      border: 1px solid var(--line);
       border-radius: 100px;
     }
     .agent-method-dot {
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--white-50);
+      background: var(--ink4);
     }
 
     .agent-features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: var(--white-10);
+      background: var(--line);
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 48px;
+      border: 1px solid var(--line);
     }
     .agent-feature {
-      background: rgba(10,18,40,0.9);
+      background: var(--bg-white);
       padding: 40px 32px;
       transition: background 0.25s;
     }
     .agent-feature:hover {
-      background: rgba(20,28,60,0.9);
+      background: var(--bg-gray);
     }
     .agent-feature-num {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
-      color: var(--white-50);
+      color: var(--ink4);
       margin-bottom: 16px;
     }
     .agent-feature h4 {
       font-size: 20px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--ink);
       margin-bottom: 10px;
     }
     .agent-feature p {
       font-size: 14px;
-      color: var(--white-70);
+      color: var(--ink3);
       line-height: 1.6;
     }
 
@@ -1523,8 +1513,8 @@
       align-items: center;
       gap: 10px;
       padding: 16px 36px;
-      background: var(--white);
-      color: var(--ink);
+      background: #0050b0;
+      color: var(--white);
       font-size: 15px;
       font-weight: 700;
       text-decoration: none;
@@ -1533,9 +1523,9 @@
       letter-spacing: -0.01em;
     }
     .agent-cta-btn:hover {
-      background: var(--white-90);
+      background: #004090;
       transform: translateY(-1px);
-      box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+      box-shadow: 0 8px 32px rgba(0,80,176,0.25);
     }
 
     @media (max-width: 768px) {
@@ -1877,17 +1867,17 @@
       <div class="agent-feature">
         <p class="agent-feature-num">01</p>
         <h4>Compose</h4>
-        <p>Define your Physical AI product through a structured decision matrix — AI capability, physical capability, form factor, and target user.</p>
+        <p>Generate your Physical AI product through a structured decision matrix — AI capability, physical capability, form factor, and target user.</p>
       </div>
       <div class="agent-feature">
         <p class="agent-feature-num">02</p>
         <h4>Discovery</h4>
-        <p>Explore trending concepts, browse community-voted ideas, and discover what's gaining traction in the Physical AI landscape.</p>
+        <p>Explore trending concepts, browse community-voted ideas, and discover what's newly launched in the Physical AI landscape.</p>
       </div>
       <div class="agent-feature">
         <p class="agent-feature-num">03</p>
         <h4>Breakdown</h4>
-        <p>Get AI-generated product analysis — market fit scoring, technical feasibility, and go-to-market strategy in seconds.</p>
+        <p>Get Agent-generated product analysis — market fit scoring, technical feasibility, and go-to-market strategy in seconds.</p>
       </div>
     </div>
 
