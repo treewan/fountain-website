@@ -614,6 +614,15 @@
           <input type="text" id="location" name="location" required
             placeholder="e.g., Me in Palo Alto, CTO in New York">
         </div>
+
+        <div class="field">
+          <label class="q" for="founder_education">
+            <span class="num">05</span>Education / graduating school(s)
+          </label>
+          <input type="text" id="founder_education" name="founder_education"
+            placeholder="e.g., Stanford CS · MIT MBA · Tsinghua EE">
+          <div class="hint">One per founder, separated by · or commas. Optional.</div>
+        </div>
       </section>
 
       <!-- ══════════ SECTION 2 ══════════ -->
@@ -624,7 +633,7 @@
 
         <div class="field">
           <label class="q" for="project">
-            <span class="num">05</span>Project name<span class="req">*</span>
+            <span class="num">06</span>Project name<span class="req">*</span>
           </label>
           <input type="text" id="project" name="project" required placeholder="">
         </div>
@@ -632,14 +641,14 @@
         <div class="field-grid-2">
           <div class="field">
             <label class="q" for="project_site">
-              <span class="num">06</span>Project website<span class="req">*</span>
+              <span class="num">07</span>Project website<span class="req">*</span>
             </label>
             <input type="text" inputmode="url" id="project_site" name="project_site" required pattern=".*\..*" title="Enter your project site — protocol optional" placeholder="yoursite.com">
           </div>
 
           <div class="field">
             <label class="q" for="project_social">
-              <span class="num">07</span>Social media (X / LinkedIn)
+              <span class="num">08</span>Social media (X / LinkedIn)
             </label>
             <input type="text" id="project_social" name="project_social" placeholder="https:// or @handle">
           </div>
@@ -647,7 +656,7 @@
 
         <div class="field">
           <label class="q" for="oneliner">
-            <span class="num">08</span>Describe your product in one sentence<span class="req">*</span>
+            <span class="num">09</span>Describe your product in one sentence<span class="req">*</span>
           </label>
           <input type="text" id="oneliner" name="oneliner" required maxlength="140"
             placeholder="A wearable AI recorder that auto-transcribes meetings and generates summaries.">
@@ -655,8 +664,42 @@
         </div>
 
         <div class="field">
+          <label class="q" for="target_customer">
+            <span class="num">10</span>Who is your target customer?<span class="req">*</span>
+          </label>
+          <input type="text" id="target_customer" name="target_customer" required
+            placeholder="e.g., Mid-market e-commerce fulfillment centers in North America">
+        </div>
+
+        <div class="field">
+          <label class="q" for="market_size">
+            <span class="num">11</span>How big is the market?<span class="req">*</span>
+          </label>
+          <input type="text" id="market_size" name="market_size" required
+            placeholder="e.g., USD 50B global warehouse automation, growing 12% CAGR">
+        </div>
+
+        <div class="field">
+          <label class="q" for="competitors">
+            <span class="num">12</span>Competitors &amp; how you differentiate<span class="req">*</span>
+          </label>
+          <textarea id="competitors" name="competitors" required maxlength="500"
+            placeholder="Name the closest 1–3 competitors and how you win in 1–2 sentences."></textarea>
+          <div class="counter mono" id="competitors-counter">0 / 500</div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="ai_layer">
+            <span class="num">13</span>Your AI / technology layer<span class="req">*</span>
+          </label>
+          <textarea id="ai_layer" name="ai_layer" required maxlength="500"
+            placeholder="Foundation models, custom training, sensor fusion, edge deployment, etc."></textarea>
+          <div class="counter mono" id="ai_layer-counter">0 / 500</div>
+        </div>
+
+        <div class="field">
           <label class="q">
-            <span class="num">09</span>Where does your project sit?<span class="req">*</span>
+            <span class="num">14</span>Where does your project sit?<span class="req">*</span>
           </label>
           <div class="options">
             <label class="option"><input type="radio" name="form" value="wearable" required>
@@ -677,7 +720,7 @@
 
         <div class="field">
           <label class="q">
-            <span class="num">10</span>Current stage<span class="req">*</span>
+            <span class="num">15</span>Current stage<span class="req">*</span>
           </label>
           <div class="options">
             <label class="option"><input type="radio" name="stage" value="idea" required>
@@ -695,7 +738,7 @@
 
         <div class="field">
           <label class="q">
-            <span class="num">11</span>Funding stage<span class="req">*</span>
+            <span class="num">16</span>Funding stage<span class="req">*</span>
           </label>
           <div class="options">
             <label class="option"><input type="radio" name="funding" value="bootstrapped" required>
@@ -716,7 +759,7 @@
 
         <div class="field">
           <label class="q" for="deck">
-            <span class="num">12</span>Pitch deck link
+            <span class="num">17</span>Pitch deck link
           </label>
           <input type="text" inputmode="url" id="deck" name="deck"
             pattern=".*\..*" title="Enter a shareable link — protocol optional"
@@ -726,7 +769,7 @@
 
         <div class="field">
           <label class="q" for="demo">
-            <span class="num">13</span>Demo video or product photo
+            <span class="num">18</span>Demo video or product photo
           </label>
           <input type="text" inputmode="url" id="demo" name="demo"
             pattern=".*\..*" title="Enter a video link — protocol optional"
@@ -743,7 +786,7 @@
 
         <div class="field">
           <label class="q" for="why">
-            <span class="num">14</span>Why FOUNTAIN?<span class="req">*</span>
+            <span class="num">19</span>Why FOUNTAIN?<span class="req">*</span>
           </label>
           <textarea id="why" name="why" required maxlength="300"
             placeholder="Be specific. We'd rather hear concrete reasons than generic praise — e.g., why FOUNTAIN over YC, Hf0, or others."></textarea>
@@ -752,7 +795,7 @@
 
         <div class="field">
           <label class="q">
-            <span class="num">15</span>How did you hear about FOUNTAIN?<span class="req">*</span>
+            <span class="num">20</span>How did you hear about FOUNTAIN?<span class="req">*</span>
           </label>
           <div class="options">
             <label class="option"><input type="radio" name="source" value="twitter" required>
@@ -775,7 +818,7 @@
 
         <div class="field">
           <label class="q" for="extra">
-            <span class="num">16</span>Anything else we should know?
+            <span class="num">21</span>Anything else we should know?
           </label>
           <textarea id="extra" name="extra" maxlength="300"
             placeholder="Optional. Sometimes the most important thing is what wasn't asked."></textarea>
@@ -829,6 +872,8 @@
       update();
     }
     bindCounter('oneliner', 'oneliner-counter', 140);
+    bindCounter('competitors', 'competitors-counter', 500);
+    bindCounter('ai_layer', 'ai_layer-counter', 500);
     bindCounter('why', 'why-counter', 300);
     bindCounter('ask', 'ask-counter', 300);
     bindCounter('extra', 'extra-counter', 300);
